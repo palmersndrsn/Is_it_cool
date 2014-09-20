@@ -1,1 +1,37 @@
-<h1>hi</h1>
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand">IIC?</a>
+
+		</div>
+
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 col-xs-12 box">
+		<div class="row">
+			<div id="one" class="col-md-12 box">
+				<h1 class="header">IS IT COOL?</h1>
+				<form ng-submit="search(searchVal)">
+					<input type="text" autofocus="true" required="true" placeholder="¯\_(ツ)_/¯" class="form-control searchval" ng-model="searchVal">
+					<button class="btn">Search</button>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div id="one" class="col-md-12 box">
+				<form ng-submit="signUp(user)">
+					<h1 class="header">Sign me up</h1>
+					<input ng-model="user.email" class="form-control" required="true" type="text" placeholder="email">
+					<input ng-model="user.username" class="form-control" required="true" type="text" placeholder="username">
+					<input ng-model="user.password" class="form-control" required="true" type="password" placeholder="password">
+					<button class="btn">Submit</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+		<div id="two" class="col-md-6 col-xs-12 box">
+		</div>
+</div>

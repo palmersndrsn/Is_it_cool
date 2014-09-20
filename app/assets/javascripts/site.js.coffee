@@ -15,5 +15,15 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 
 isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
+	$scope.signUp = (newUser) ->
+		console.log newUser
 
+	$scope.search = (searchVal) ->
+		console.log searchVal
+
+
+]
+
+isItCool.config ["$httpProvider", ($httpProvider)->
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ]

@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140919221410) do
   end
 
   create_table "reviews", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
     t.string   "body"
     t.string   "img_url"
     t.string   "raito"
