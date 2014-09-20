@@ -7,6 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :loc
       t.string :lat
       t.string :long
+      t.string :tweet_count
+      t.string :tweet_rating
 
       t.timestamps
     end
