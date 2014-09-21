@@ -15,11 +15,24 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 
 isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
+# user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
+		$http.post("/users.json", newUser).success (data) ->
+			$scope.newUser = {}
+			$scope.users = data
+			console.log data
 
 	$scope.search = (searchVal) ->
 		console.log searchVal
+
+# new event
+	$scope.newEvent = (event) ->
+		console.log event
+		$http.post("/events.json", event).success (data) ->
+			$scope.newEvent = {}
+			$scope.users = data
+			console.log data
 
 
 ]
