@@ -21,11 +21,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	$scope.getEvents()
 
-# search
-	$scope.search = (searchVal) ->
-		$http.get("/events.json")
-		# not sure what next, I think it should just filter the index on the page
-
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
