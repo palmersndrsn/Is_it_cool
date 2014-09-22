@@ -4,11 +4,11 @@
 			<a class="navbar-brand">IIC?</a>
 
 		</div>
-
 	</div>
 </div>
 
 <div class="row">
+
 	<div class="col-md-6 col-xs-12 box">
 		<div class="row">
 			<div id="one" class="col-md-12 box">
@@ -19,6 +19,7 @@
 				</form>
 			</div>
 		</div>
+
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="signUp(user)">
@@ -31,7 +32,31 @@
 
 			</div>
 		</div>
-	</div>
-		<div id="two" class="col-md-6 col-xs-12 box">
+
+		<div class="row">
+			<div id="one" class="col-md-12 box">
+				<form ng-submit="newEvent(event)">
+					<h1 class="header">Post a happs</h1>
+					<input ng-model="event.name" class="form-control" required="true" type="text" placeholder="name">
+					<input ng-model="event.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
+					<input ng-model="event.desc" class="form-control" required="true" type="text" placeholder="short description">
+					<input ng-model="event.loc" class="form-control" required="true" type="text" placeholder="address">
+					<button class="btn">Submit</button>
+				</form>
+
+			</div>
 		</div>
+
+	</div>
+
+	<div id="two" class="col-md-6 col-xs-12 box">
+	<!-- events -->
+	<ul ng-repeat="event in events">
+		<h3>{{event.name}}</h3>
+		<h4>{{event.hashtag}}</h4>
+		<p>{{event.desc}}</p>
+		<p>{{event.loc}}</p>
+	</ul>
+	</div>
+
 </div>
