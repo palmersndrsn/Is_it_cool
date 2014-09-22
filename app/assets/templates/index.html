@@ -15,9 +15,9 @@
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<h1 class="header">IS IT COOL?</h1>
-
+				<form>
 					<input type="text" autofocus="true" required="true"  class="form-control searchval" ng-model="query">
-
+				</form>
 			</div>
 		</div>
 
@@ -52,16 +52,31 @@
 
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
-
-		<div ng-repeat="event in events | filter:query">
+		<!-- need to add order by tweet count  -->
+		<div ng-repeat="event in events | filter:query ">
 			<div class="thumbnail">
 				<h3>{{event.name}}</h3>
 				<h4>{{event.hashtag}}</h4>
 				<p>{{event.desc}}</p>
 				<p>{{event.loc}}</p>
-				<button class="btn" ng-click="review(events.indexOf(event))">Review</button>
+				<div class="from-control">
+				  <input class="btn" ng-model="collapse" type="checkbox">Add a Review<div ng-show="collapse">
+				     <form ng-submit="addReview(rev, events.indexOf(event))">
+				     	<label>Review</label>
+				     	<input type="text" class="form-control" ng-model="rev.body" placeholder="140 characters">
+				     	<label>Image</label>
+				     	<input type="text" class="form-control" ng-model="rev.img_url" placeholder="image_url">
+				     	<label>The Ratio: {{rev.ratio}}% Men</label>
+				     	<input type="range" ng-model="rev.ratio" placeholder="the ratio" min="1" max="100">
+				     	<label>The Grime:  {{rev.grime}}% Grime</label>
+				     	<input type="range" ng-model="rev.grime"placeholder="the grime level" min="1" max="100">
+				     	<button class="btn form-control" >Add Review</button>
+				     </form>
+				  </div>
+				</div>
 			</div>
 		</div>
 	</div>
 
+ng-click="review(events.indexOf(event))"
 </div>

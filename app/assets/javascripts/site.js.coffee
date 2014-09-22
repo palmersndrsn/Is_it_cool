@@ -21,6 +21,17 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	$scope.getEvents()
 
+# clear search bar
+
+
+#clicking on event to see more
+
+# adding a review to an event
+
+	$scope.addReview = (newReview, index) ->
+		console.log newReview
+		console.log index
+
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
