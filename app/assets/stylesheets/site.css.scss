@@ -28,12 +28,12 @@ form {
 	margin: auto;
 	margin-top: 150px;
 	margin-bottom: 10px;
-	font-family: Futura;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 	color: white;
 }
 
 .box {
-	background-color: lightslategrey;
+	background-color: rgb(34,49,63);
 	display: block;
 	border: 1px;
 	border-color: white;
@@ -47,4 +47,9 @@ form {
 	border: 1px solid grey;
 	font: white;
 
+}
+
+.form-control {
+	margin-top:1.5px;
+	margin-bottom:1.5px;
 }
