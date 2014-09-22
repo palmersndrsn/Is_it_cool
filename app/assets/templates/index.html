@@ -15,8 +15,9 @@
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<h1 class="header">IS IT COOL?</h1>
-				<form>
-					<input type="text" autofocus="true" required="true"  class="form-control searchval" ng-model="query">
+				<form ng-submit="clearSearch">
+					<input type="text" autofocus="true" required="true" class="form-control searchval" ng-model="query">
+					<button ng-click="clearSearch()" class="btn">Search</button>
 				</form>
 			</div>
 		</div>
@@ -53,7 +54,7 @@
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
 		<!-- need to add order by tweet count  -->
-		<div ng-repeat="event in events | filter:query ">
+		<div class="events_list" ng-repeat="event in events | filter:query ">
 			<div class="thumbnail">
 				<h3>{{event.name}}</h3>
 				<h4>{{event.hashtag}}</h4>
@@ -77,6 +78,4 @@
 			</div>
 		</div>
 	</div>
-
-ng-click="review(events.indexOf(event))"
 </div>

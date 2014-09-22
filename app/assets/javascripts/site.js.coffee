@@ -22,13 +22,15 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.getEvents()
 
 # clear search bar
-
+	$scope.clearSearch = ->
+		$scope.query = ""
 
 #clicking on event to see more
 
 # adding a review to an event
 
 	$scope.addReview = (newReview, index) ->
+		$scope.rev = ""
 		console.log newReview
 		console.log index
 
