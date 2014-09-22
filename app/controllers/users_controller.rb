@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    p user_params
-    respond_with User.create(user_params)
+    up = params.require(:user).permit(:email, :username, :password)
+    respond_with User.create(up)
   end
 
   def show

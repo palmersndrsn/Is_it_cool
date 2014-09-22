@@ -14,7 +14,13 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 ]
 
 isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
+# get all events
+	$scope.getEvents = ->
+		$http.get("/events.json").success (data) ->
+			$scope.events = data
 
+
+	$scope.getEvents()
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
@@ -30,8 +36,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.newEvent = (event) ->
 		console.log event
 		$http.post("/events.json", event).success (data) ->
-			$scope.newEvent = {}
-			$scope.users = data
+			$scope.event = {}
+			$scope.events = data
 			console.log data
 
 

@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   respond_to :json, :html
 
   def index
+    respond_with Event.all
   end
 
   def create

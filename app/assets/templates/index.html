@@ -51,6 +51,12 @@
 
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
+	<ul ng-repeat="event in events">
+		<h3>{{event.name}}</h3>
+		<h4>{{event.hashtag}}</h4>
+		<p>{{event.desc}}</p>
+		<p>{{event.loc}}</p>
+	</ul>
 	</div>
 
 </div>
