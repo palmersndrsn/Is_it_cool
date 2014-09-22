@@ -3,7 +3,7 @@
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand">IIC?</a>
+			<a class="navbar-brand">¯\_(ツ)_/¯</a>
 
 		</div>
 	</div>
@@ -15,10 +15,9 @@
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<h1 class="header">IS IT COOL?</h1>
-				<form ng-submit="search(searchVal)">
-					<input type="text" autofocus="true" required="true" placeholder="¯\_(ツ)_/¯" class="form-control searchval" ng-model="searchVal">
-					<button class="btn">Search</button>
-				</form>
+
+					<input type="text" autofocus="true" required="true"  class="form-control searchval" ng-model="query">
+
 			</div>
 		</div>
 
@@ -54,7 +53,7 @@
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
 
-		<div ng-repeat="event in events">
+		<div ng-repeat="event in events | filter:query">
 			<div class="thumbnail">
 				<h3>{{event.name}}</h3>
 				<h4>{{event.hashtag}}</h4>
