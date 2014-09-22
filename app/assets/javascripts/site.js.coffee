@@ -19,8 +19,13 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 		$http.get("/events.json").success (data) ->
 			$scope.events = data
 
-
 	$scope.getEvents()
+
+# search
+	$scope.search = (searchVal) ->
+		$http.get("/events.json")
+		# not sure what next, I think it should just filter the index on the page
+
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
@@ -28,9 +33,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.newUser = {}
 			$scope.users = data
 			console.log data
-
-	$scope.search = (searchVal) ->
-		console.log searchVal
 
 # new event
 	$scope.newEvent = (event) ->
@@ -40,6 +42,9 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.events = data
 			console.log data
 
+#  event review button
+	$scope.review = (eventId) ->
+		console.log eventId
 
 ]
 
