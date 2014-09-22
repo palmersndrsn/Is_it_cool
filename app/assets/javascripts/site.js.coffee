@@ -19,8 +19,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 		$http.get("/events.json").success (data) ->
 			$scope.events = data
 
-
 	$scope.getEvents()
+
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
@@ -28,9 +28,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.newUser = {}
 			$scope.users = data
 			console.log data
-
-	$scope.search = (searchVal) ->
-		console.log searchVal
 
 # new event
 	$scope.newEvent = (event) ->
@@ -40,7 +37,19 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.events = data
 			console.log data
 
+#  event review button
+	$scope.review = (eventId) ->
+		console.log eventId
+		# need to add logic for expanding event for user to review
 
+
+	# limit height and have the events scroll
+
+
+	# twitter api logic to search by hashtag and parse
+
+
+	# need to add function for showing single event and map and hiding everything else
 ]
 
 isItCool.config ["$httpProvider", ($httpProvider)->

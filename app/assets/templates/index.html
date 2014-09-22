@@ -1,3 +1,5 @@
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -23,7 +25,7 @@
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="signUp(user)">
-					<h1 class="header">Sign me up</h1>
+					<h1 class="header">SIGN ME UP</h1>
 					<input ng-model="user.email" class="form-control" required="true" type="text" placeholder="email">
 					<input ng-model="user.username" class="form-control" required="true" type="text" placeholder="username">
 					<input ng-model="user.password" class="form-control" required="true" type="password" placeholder="password">
@@ -36,7 +38,7 @@
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="newEvent(event)">
-					<h1 class="header">Post a happs</h1>
+					<h1 class="header">POST SOMETHING</h1>
 					<input ng-model="event.name" class="form-control" required="true" type="text" placeholder="name">
 					<input ng-model="event.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
 					<input ng-model="event.desc" class="form-control" required="true" type="text" placeholder="short description">
@@ -51,12 +53,16 @@
 
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
-	<ul ng-repeat="event in events">
-		<h3>{{event.name}}</h3>
-		<h4>{{event.hashtag}}</h4>
-		<p>{{event.desc}}</p>
-		<p>{{event.loc}}</p>
-	</ul>
+
+		<div ng-repeat="event in events">
+			<div class="thumbnail">
+				<h3>{{event.name}}</h3>
+				<h4>{{event.hashtag}}</h4>
+				<p>{{event.desc}}</p>
+				<p>{{event.loc}}</p>
+				<button class="btn" ng-click="review(events.indexOf(event))">Review</button>
+			</div>
+		</div>
 	</div>
 
 </div>

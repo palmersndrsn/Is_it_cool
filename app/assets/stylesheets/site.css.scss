@@ -3,47 +3,54 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-	#one {
-		/*background-color: red;*/
-		height: 500px;
 
-	}
-	#two {
-		/*background-color: blue;*/
-		height: 1000px;
-		margin-top: 1px;
-	}
+#one {
+	/*background-color: red;*/
+	height: 500px;
+	margin-top: -20px
 
-	form {
-		text-align: center;
-		max-width: 300px;
-		margin: auto;
+}
+#two {
+	/*background-color: blue;*/
+	height: 1000px;
+	margin-top: -19px;
+}
 
-	}
-	.header {
-		margin-top: 10px;
-		letter-spacing: .3em;
-		text-align: center;
-		margin: auto;
-		margin-top: 150px;
-		margin-bottom: 10px;
-		font-family: Futura;
-		color: white;
-	}
+form {
+	text-align: center;
+	max-width: 300px;
+	margin: auto;
 
-	.box {
-		background-color: lightslategrey;
-		display: block;
-		border: 1px;
-		border-color: white;
-		border-style: solid;
-	}
+}
+.header {
+	margin-top: 10px;
+	letter-spacing: .3em;
+	text-align: center;
+	margin: auto;
+	margin-top: 150px;
+	margin-bottom: 10px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+	color: white;
+}
 
-	.event {
-		width: 100%;
-		height: 30%;
-		background-color: black;
-		border: 1px solid grey;
-		font: white;
+.box {
+	background-color: rgb(34,49,63);
+	display: block;
+	border: 1px;
+	border-color: white;
+	border-style: solid;
+}
 
-	}
+.event {
+	width: 100%;
+	height: 30%;
+	background-color: black;
+	border: 1px solid grey;
+	font: white;
+
+}
+
+.form-control {
+	margin-top:1.5px;
+	margin-bottom:1.5px;
+}
