@@ -45,7 +45,16 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 #  event review button
 	$scope.review = (eventId) ->
 		console.log eventId
+		# need to add logic for expanding event for user to review
 
+
+	# limit height and have the events scroll
+
+
+	# twitter api logic to search by hashtag and parse
+
+
+	# need to add function for showing single event and map and hiding everything else
 ]
 
 isItCool.config ["$httpProvider", ($httpProvider)->
