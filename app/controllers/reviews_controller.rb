@@ -12,8 +12,15 @@ class ReviewsController < ApplicationController
 	def create
 
 		new_review = params.require(:review).permit(:body, :cool, :ratio, :grime, :event_id)
-		p new_review
-		respond_with Review.create(new_review)
+
+		review = Review.create(new_review)
+
+		event = Event.find_by_id(params[:event_id])
+
+		event.reviews << review
+
+		respond_with [event, review]
+
 	end
 
 	def show

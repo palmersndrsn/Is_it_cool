@@ -22,7 +22,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.getEvents()
 
 # clear search bar
-	$scope.clearSearch = ->
+	$scope.clearSearch = =>
 		$scope.query = ""
 
 #clicking on event to see more
@@ -30,10 +30,10 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 # adding a review to an event
 
 	$scope.addReview = (newReview, index) ->
-		console.log this
 		newReview.event_id = index
 		$http.post("/events/" + index + "/reviews.json", {review: newReview}).success (data) ->
 			$scope.reviews = data
+
 
 
 # user signup
@@ -47,7 +47,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 # new event
 	$scope.newEvent = (event) ->
 		console.log event
-		$http.post("/events.json", event).success (data) ->
+		$http.post("/events.json", event).success (data) =>
 			$scope.event = {}
 			$scope.events = data
 			console.log data

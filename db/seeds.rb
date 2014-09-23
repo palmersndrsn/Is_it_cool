@@ -58,43 +58,43 @@ rickybobbydj = Event.create({name: "Ricky Bobby's DJ Night",
 # reviews
 
 cochellaReview1 = Review.create({body: "What hasn't been said about Cochella?",
-	cool: "Yes",
+	cool: "Cool",
 	ratio: "50",
 	grime: "70"
 	})
 
 cochellaReview2 = Review.create({body: "It used to be cool",
-	cool: "No",
+	cool: "Not Cool",
 	ratio: "55",
 	grime: "78"
 	})
 
 cochellaReview3 = Review.create({body: "I met the love of my life",
-	cool: "Yes",
+	cool: "Cool",
 	ratio: "50",
 	grime: "40"
 	})
 
 rbdj1 = Review.create({body: "This guy sucks",
-	cool: "No",
+	cool: "Not Cool",
 	ratio: "80",
 	grime: "54"
 	})
 
 LebwoskiFest1 = Review.create({body: "Yeah, well, you know, that's just, like, your opinion, man.",
-	cool: "Yes",
+	cool: "Cool",
 	ratio: "80",
 	grime: "70"
 	})
 
 LebwoskiFest2 = Review.create({body: " It's good knowin' he's out there. The Dude. Takin' 'er easy for all us sinners. Shoosh. I sure hope he makes the finals.",
-	cool: "Yes",
+	cool: "Cool",
 	ratio: "82",
 	grime: "62"
 	})
 
 hierodayreview1 = Review.create({body: "It's smokey, it's a little dirty, it's Oakland and it's awesome",
-	cool: "Yes",
+	cool: "Cool",
 	ratio: "55",
 	grime: "70"
 	})
@@ -117,9 +117,6 @@ user123.reviews << hierodayreview1
 user123.reviews << cochellaReview1
 
 palmer.reviews << LebwoskiFest1
-
-
-
 
 
 # reviews events
