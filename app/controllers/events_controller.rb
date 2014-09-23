@@ -9,8 +9,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    hashtag = params.require(:event).permit(:hashtag)
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc)
     respond_with Event.create(new_event)
+
   end
 
   def show

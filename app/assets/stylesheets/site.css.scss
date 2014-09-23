@@ -1,19 +1,32 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	text-align: center;
+}
+
+.review_search {
+	max-width: 300px;
+}
+
+#event_tn {
+	background-color: rgb(218,223,225);
+}
 
 
+.events_list {
+	margin-top: 10px;
+}
 
 #one {
 	/*background-color: red;*/
 	height: 500px;
-	margin-top: -20px
 
 }
 #two {
 	/*background-color: blue;*/
 	height: 1000px;
-	margin-top: -19px;
+	margin-top: 1px;
 }
 
 form {
