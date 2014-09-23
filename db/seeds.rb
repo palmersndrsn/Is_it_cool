@@ -102,6 +102,7 @@ hierodayreview1 = Review.create({body: "It's smokey, it's a little dirty, it's O
 
 
 # relationships
+
 # reviews users
 
 user1.reviews << cochellaReview3

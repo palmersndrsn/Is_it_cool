@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   respond_to :json, :html
 
   def index
+
   	@event = Event.find_by_id(params[:event_id])
   	render json: @event.reviews
   end

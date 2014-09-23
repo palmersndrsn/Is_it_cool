@@ -35,12 +35,11 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.reviews = data
 
 
-
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
-		$http.post("/users.json", {user: newUser}).success (data) ->
-			$scope.newUser = {}
+		$http.post("/users.json", {user: newUser}).success (data) =>
+			$scope.user = {}
 			$scope.users = data
 			console.log data
 
