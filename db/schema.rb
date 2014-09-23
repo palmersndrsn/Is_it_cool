@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140919221410) do
     t.integer  "event_id"
     t.string   "body"
     t.string   "img_url"
-    t.string   "raito"
+    t.string   "ratio"
     t.string   "grime"
     t.datetime "created_at"
     t.datetime "updated_at"

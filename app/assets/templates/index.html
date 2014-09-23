@@ -15,7 +15,7 @@
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<h1 class="header">IS IT COOL?</h1>
-				<form ng-submit="clearSearch">
+				<form ng-submit="clearSearch()">
 					<input type="text" autofocus="true" required="true" class="form-control searchval" ng-model="query">
 					<button ng-click="clearSearch()" class="btn">Search</button>
 				</form>
@@ -48,33 +48,44 @@
 
 			</div>
 		</div>
-
 	</div>
 
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
 		<!-- need to add order by tweet count  -->
 		<div class="events_list" ng-repeat="event in events | filter:query ">
-			<div class="thumbnail">
+			<div id="event_tn" class="thumbnail">
 				<h3>{{event.name}}</h3>
 				<h4>{{event.hashtag}}</h4>
 				<p>{{event.desc}}</p>
 				<p>{{event.loc}}</p>
-				<div class="from-control">
-				  <input class="btn" ng-model="collapse" type="checkbox">Add a Review<div ng-show="collapse">
-				     <form ng-submit="addReview(rev, events.indexOf(event))">
-				     	<label>Review</label>
-				     	<input type="text" class="form-control" ng-model="rev.body" placeholder="140 characters">
-				     	<label>Image</label>
-				     	<input type="text" class="form-control" ng-model="rev.img_url" placeholder="image_url">
-				     	<label>The Ratio: {{rev.ratio}}% Men</label>
-				     	<input type="range" ng-model="rev.ratio" placeholder="the ratio" min="1" max="100">
-				     	<label>The Grime:  {{rev.grime}}% Grime</label>
-				     	<input type="range" ng-model="rev.grime"placeholder="the grime level" min="1" max="100">
-				     	<button class="btn form-control" >Add Review</button>
-				     </form>
-				  </div>
-				</div>
+
+					<label>View Reviews</label>
+					<input class="btn" ng-model="collapse1" ng-click="getReviews(event)" type="checkbox"><div ng-show="collapse1">
+
+						<div>
+							<label>Add a Review</label>
+ 							<input class="btn" ng-model="collapse" type="checkbox">
+						  <div ng-show="collapse">
+					     <form ng-submit="addReview(rev, event.id)">
+					     	<label>Review</label>
+					     	<input type="text" class="form-control" ng-model="rev.body" placeholder="140 characters">
+					     	<label>Image</label>
+					     	<input type="text" class="form-control" ng-model="rev.img_url" placeholder="image_url">
+					     	<label>The Ratio: {{rev.ratio}}% Dudes</label>
+					     	<input type="range" ng-model="rev.ratio" placeholder="the ratio" min="1" max="100">
+					     	<label>The Grime:  {{rev.grime}}% Grime</label>
+					     	<input type="range" ng-model="rev.grime"placeholder="the grime level" min="1" max="100">
+					     	<button class="btn form-control" >Add Review</button>
+					     </form>
+						  </div>
+						</div>
+
+					<input type="text" required="true" class="form-control" ng-model="reviewQuery">
+					<div ng-repeat="review in reviews | filter:reviewQuery">
+						<p>{{body}}</p>
+					</div>
+
 			</div>
 		</div>
 	</div>

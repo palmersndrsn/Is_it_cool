@@ -30,14 +30,16 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 # adding a review to an event
 
 	$scope.addReview = (newReview, index) ->
-		$scope.rev = ""
-		console.log newReview
-		console.log index
+		console.log this
+		newReview.event_id = index
+		$http.post("/events/" + index + "/reviews.json", {review: newReview}).success (data) ->
+			$scope.reviews = data
+
 
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
-		$http.post("/users.json", newUser).success (data) ->
+		$http.post("/users.json", {user: newUser}).success (data) ->
 			$scope.newUser = {}
 			$scope.users = data
 			console.log data
@@ -50,9 +52,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.events = data
 			console.log data
 
-#  event review button
-	$scope.review = (eventId) ->
-		console.log eventId
+#  event review butt
 		# need to add logic for expanding event for user to review
 
 
@@ -63,6 +63,13 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 
 	# need to add function for showing single event and map and hiding everything else
+
+  # get reviews
+	$scope.getReviews = (event) ->
+		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
+			console.log data
+			$scope.reviews = data
+
 ]
 
 isItCool.config ["$httpProvider", ($httpProvider)->
