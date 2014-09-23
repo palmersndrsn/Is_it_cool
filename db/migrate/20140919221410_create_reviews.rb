@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :user_id
       t.integer :event_id
       t.string :body
-      t.string :img_url
+      t.string :cool
       t.string :ratio
       t.string :grime
 

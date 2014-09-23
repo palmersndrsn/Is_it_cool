@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140919221410) do
   enable_extension "plpgsql"
 
   create_table "events", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "hashtag"
     t.string   "desc"
@@ -33,7 +34,7 @@ ActiveRecord::Schema.define(version: 20140919221410) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.string   "body"
-    t.string   "img_url"
+    t.string   "cool"
     t.string   "ratio"
     t.string   "grime"
     t.datetime "created_at"

@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
 	def create
 
-		new_review = params.require(:review).permit(:body, :img_url, :ratio, :grime, :event_id)
+		new_review = params.require(:review).permit(:body, :cool, :ratio, :grime, :event_id)
 		p new_review
 		respond_with Review.create(new_review)
 	end
