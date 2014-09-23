@@ -83,7 +83,9 @@
 
 					<input type="text" required="true" class="form-control" ng-model="reviewQuery">
 					<div ng-repeat="review in reviews | filter:reviewQuery">
-						<p>{{body}}</p>
+						<p>{{review.body}}</p>
+						<p>The Ratio: {{review.ratio}}</p>
+						<p>The Grime: {{review.grime}}</p>
 					</div>
 
 			</div>
