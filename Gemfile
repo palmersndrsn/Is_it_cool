@@ -34,6 +34,8 @@ gem 'angular-rails-templates'
 # gem 'unicorn'
 gem 'geocoder'
 
+gem 'twitter'
+
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do

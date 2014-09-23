@@ -80,12 +80,17 @@
 					     </form>
 						  </div>
 						</div>
-
-					<input type="text" required="true" class="form-control" ng-model="reviewQuery">
+					<br>
+					<form>
+						<label for="review_search">Search through reviews</label><input type="text" required="true" class="form-control review_search" ng-model="reviewQuery">
+					</form>
+					<h3>Reviews</h3><br>
+					<!-- need to add user name -->
 					<div ng-repeat="review in reviews | filter:reviewQuery">
-						<p>{{review.body}}</p>
 						<p>The Ratio: {{review.ratio}}</p>
 						<p>The Grime: {{review.grime}}</p>
+						<p>{{review.body}}</p>
+						<br>
 					</div>
 
 			</div>
