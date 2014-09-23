@@ -20,7 +20,11 @@ class ReviewsController < ApplicationController
 
 		event.reviews << review
 
-		respond_with [event, review]
+		render json: review
+
+		# respond_with [event, review]
+		# puts "THIS IS TEST"
+		# puts test
 
 	end
 

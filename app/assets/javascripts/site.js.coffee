@@ -14,12 +14,26 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 ]
 
 isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
+
+	$scope.reviews = []
+	$scope.review = {}
+
+
 # get all events
 	$scope.getEvents = ->
 		$http.get("/events.json").success (data) ->
 			$scope.events = data
 
 	$scope.getEvents()
+
+  # get reviews
+	$scope.getReviews = (event) ->
+		# $scope.show_reviews = true
+		this.show_reviews = true
+		console.log $scope.collapse1
+		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
+			$scope.reviews = data
+
 
 # clear search bar
 	$scope.clearSearch = =>
@@ -29,11 +43,12 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 # adding a review to an event
 
-	$scope.addReview = (newReview, index) ->
-		newReview.event_id = index
-		$http.post("/events/" + index + "/reviews.json", {review: newReview}).success (data) ->
-			$scope.reviews = data
-
+	$scope.addReview = (review, index) ->
+		review.event_id = index
+		$http.post("/events/" + index + "/reviews.json", {review: review}).success (data) ->
+			$scope.reviews.push data
+			$scope.review = {}
+			$scope.show_review_form = false
 
 # user signup
 	$scope.signUp = (newUser) ->
@@ -51,6 +66,24 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.events = data
 			console.log data
 
+
+
+		# edit event
+	$scope.editEvent = (event, index) ->
+		this.show_events = true
+		console.log $scope.review
+		console.log index
+		$http.put("/events/" + index + ".json", event).success (data) =>
+			console.log data
+
+
+	# delete event
+	$scope.deleteEvent =(event) ->
+		$http.delete("url", event).success (data)->
+			# $scope.NAMEOFARRAY.splice(scope.array.indexOf(event),1)
+		console.log $scope.review
+
+
 #  event review butt
 		# need to add logic for expanding event for user to review
 
@@ -63,11 +96,20 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	# need to add function for showing single event and map and hiding everything else
 
-  # get reviews
-	$scope.getReviews = (event) ->
-		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
-			console.log data
-			$scope.reviews = data
+
+
+	$scope.showReviewForm =->
+		$scope.show_review_form = true
+
+	# edit review
+	$scope.editReview = ->
+		console.log $scope.review
+
+
+	# delete review
+	$scope.deleteReview = ->
+		console.log $scope.review
+
 
 ]
 

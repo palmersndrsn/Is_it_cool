@@ -13,12 +13,21 @@ class EventsController < ApplicationController
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc)
     respond_with Event.create(new_event)
 
+
   end
 
   def show
   end
 
   def update
+
+    id = params[:id]
+    event = Event.find_by_id(id)
+    p "route works"
+
+    p event
+
+    respond_with
   end
 
   def destroy

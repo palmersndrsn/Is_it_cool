@@ -59,41 +59,58 @@
 				<h4>{{event.hashtag}}</h4>
 				<p>{{event.desc}}</p>
 				<p>{{event.loc}}</p>
+				<p>TESTING - {{event.id}}</p>
+				<!-- <label></label> -->
+				<button class="btn btn-info" ng-click="editEvent(event)">Edit Event</button>
+				<div ng-show="show_events">
+					<form ng-submit="editEvent(eventEdit, event.id)">
+						<label>Edit Event</label>
+						<input ng-model="eventEdit.name" class="form-control" required="true" type="text" placeholder="name">
+						<input ng-model="eventEdit.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
+						<input ng-model="eventEdit.desc" class="form-control" required="true" type="text" placeholder="short description">
+						<input ng-model="eventEdit.loc" class="form-control" required="true" type="text" placeholder="address">
+						<button class="btn">Submit</button>
+					</form>
+				</div>
 
-					<label>View Reviews</label>
-					<input class="btn" ng-model="collapse1" ng-click="getReviews(event)" type="checkbox"><div ng-show="collapse1">
+				<button ng-click="deleteEvent(event)" class="btn btn-danger">Delete</button>
+					<br>
+					<!-- <label></label> -->
+					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
+					<div ng-show="show_reviews">
+
+					<h3>Reviews</h3>
+					<!-- need to add user name -->
+					<div ng-repeat="review in reviews">
+						<h3>{{review.cool}}</h3>
+						<p>The Ratio: {{review.ratio}}</p>
+						<p>The Grime: {{review.grime}}</p>
+						<p>{{review.body}}</p>
+						<button ng-click="editReview()" class="btn">Edit</button>
+						<button ng-click="deleteReview()" class="btn btn-danger">Delete</button>
+						<br>
+					</div>
 
 						<div>
-							<label>Add a Review</label>
- 							<input class="btn" ng-model="collapse" type="checkbox">
-						  <div ng-show="collapse">
-					     <form ng-submit="addReview(rev, event.id)">
+
+ 							<button class="btn btn-success" ng-click = "showReviewForm()">Add a Review</button>
+						  <div ng-show="show_review_form">
+					     <form ng-submit="addReview(newReview, event.id)">
 					     	<label>Review</label>
-					     	<input type="text" class="form-control" ng-model="rev.body" placeholder="140 characters please">
+					     	<input type="text" class="form-control" ng-model="newReview.body" placeholder="140 characters please">
 					     	<label>Cool or Not?</label>
-					     	<input type="text" class="form-control" ng-model="rev.cool" placeholder="is it cool?">
-					     	<label>The Ratio: {{rev.ratio}}% Dudes</label>
-					     	<input type="range" ng-model="rev.ratio" placeholder="the ratio" min="1" max="100">
-					     	<label>The Grime:  {{rev.grime}}% Grime</label>
-					     	<input type="range" ng-model="rev.grime"placeholder="the grime level" min="1" max="100">
+					     	<input type="text" class="form-control" ng-model="newReview.cool" placeholder="is it cool?">
+					     	<label>The Ratio: {{newReview.ratio}}% Dudes</label>
+					     	<input type="range" ng-model="newReview.ratio" placeholder="the ratio" min="1" max="100">
+					     	<label>The Grime:  {{newReview.grime}}% Grime</label>
+					     	<input type="range" ng-model="newReview.grime"placeholder="the grime level" min="1" max="100">
 					     	<button class="btn form-control" >Add Review</button>
 					     </form>
 						  </div>
 						</div>
 					<br>
-					<form>
-						<label for="review_search">Search through reviews</label><input type="text" required="true" class="form-control review_search" ng-model="reviewQuery">
-					</form>
-					<h3>Reviews</h3><br>
-					<!-- need to add user name -->
-					<div ng-repeat="review in reviews | filter:reviewQuery">
-						<h3>{{review.cool}}</h3>
-						<p>{{review.create_at}}</p>
-						<p>The Ratio: {{review.ratio}}</p>
-						<p>The Grime: {{review.grime}}</p>
-						<p>{{review.body}}</p>
-						<br>
-					</div>
+
+
 
 			</div>
 		</div>
