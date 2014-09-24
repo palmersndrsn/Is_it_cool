@@ -30,13 +30,14 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.signInErr = true
 	$scope.signUpErr = true
 	$scope.eventErr = true
-
+	$scope.authBox = true
 
 # INIT REVIEWS
 	$scope.reviews = []
 	$scope.review = {}
 # AUTH
 
+# log in user
 	$scope.addSession = (loginUser) ->
 		console.log "hi"
 		console.log(loginUser)
@@ -52,12 +53,21 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		.error (err) ->
 			$scope.signInErr = false
 
+# checking if current user
+	$scope.checkSesh = ->
+		$http.get("/logged_in_user.json").success (user) ->
+			console.log user
+			$scope.userActive(user)
 
-	$scope.sessionActive = (user) ->
+# hides/shows features if user is authenticated
+	$scope.userActive = (user) ->
+		$scope.activeUser = user
+		$scope.authBox = false
 
 
 
 
+	$scope.checkSesh()
 # SEARCH
 	$scope.clearSearch = =>
 		$scope.query = ""
@@ -118,6 +128,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 	# edit event
 	$scope.editEvent = (event, index) ->
+		this.show_event_edit = true
 		console.log $scope.review
 		console.log index
 		$http.put("/events/" + index + ".json", event).success (data) =>
