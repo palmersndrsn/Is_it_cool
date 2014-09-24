@@ -14,6 +14,45 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 ]
 
 isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
+
+	$scope.reviews = []
+	$scope.review = {}
+
+
+# SEARCH
+	$scope.clearSearch = =>
+		$scope.query = ""
+
+# REVIEWS
+
+  # get reviews
+	$scope.getReviews = (event) ->
+		# $scope.show_reviews = true
+		this.show_reviews = true
+		console.log $scope.collapse1
+		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
+			$scope.reviews = data
+
+# adding a review to an event
+	$scope.addReview = (review, index) ->
+		review.event_id = index
+		$http.post("/events/" + index + "/reviews.json", {review: review}).success (data) ->
+			$scope.reviews.push data
+			$scope.review = {}
+			$scope.show_review_form = false
+
+
+# SIGNUP
+# user signup
+	$scope.signUp = (newUser) ->
+		console.log newUser
+		$http.post("/users.json", {user: newUser}).success (data) =>
+			$scope.user = {}
+			$scope.users = data
+			console.log data
+
+# EVENTS
+
 # get all events
 	$scope.getEvents = ->
 		$http.get("/events.json").success (data) ->
@@ -21,36 +60,35 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	$scope.getEvents()
 
-# clear search bar
-	$scope.clearSearch = =>
-		$scope.query = ""
-
-#clicking on event to see more
-
-# adding a review to an event
-
-	$scope.addReview = (newReview, index) ->
-		newReview.event_id = index
-		$http.post("/events/" + index + "/reviews.json", {review: newReview}).success (data) ->
-			$scope.reviews = data
-
-
-
-# user signup
-	$scope.signUp = (newUser) ->
-		console.log newUser
-		$http.post("/users.json", {user: newUser}).success (data) ->
-			$scope.newUser = {}
-			$scope.users = data
-			console.log data
-
 # new event
 	$scope.newEvent = (event) ->
 		console.log event
 		$http.post("/events.json", event).success (data) =>
-			$scope.event = {}
-			$scope.events = data
+			$scope.event = ""
+			$scope.events.push data
 			console.log data
+
+
+	# edit event
+	$scope.editEvent = (event, index) ->
+		this.show_event_edit = true
+		console.log $scope.review
+		console.log index
+		$http.put("/events/" + index + ".json", event).success (data) =>
+			console.log data
+			this.event = data
+			this.show_event_edit = false
+
+
+	# delete event
+	$scope.deleteEvent = (id, index) ->
+		console.log index
+		$http.delete("/events/" + id + ".json").success (data) =>
+			$scope.events.splice(index,1)
+			console.log data
+
+
+
 
 #  event review butt
 		# need to add logic for expanding event for user to review
@@ -64,11 +102,20 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	# need to add function for showing single event and map and hiding everything else
 
-  # get reviews
-	$scope.getReviews = (event) ->
-		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
-			console.log data
-			$scope.reviews = data
+
+
+	$scope.showReviewForm =->
+		$scope.show_review_form = true
+
+	# edit review
+	$scope.editReview = ->
+		console.log $scope.review
+
+
+	# delete review
+	$scope.deleteReview = ->
+		console.log $scope.review
+
 
 ]
 
