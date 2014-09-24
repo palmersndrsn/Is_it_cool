@@ -7,10 +7,10 @@
 
 		</div>
 		<!-- not working -->
-			<div ng-show="usernameNav"><p>Welcome, {{username}}</p></div>
+			<div ng-show="usernameNav"><p>Welcome, {{current_user.username}}</p></div>
 			<a class="btn btn-info" ng-click="showSearch()">Search</a>
 			<a class="btn btn-info" ng-show="eventBtnNav" ng-click="showAddEvent()">Add Event</a>
-			<a class="btn btn-info" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign Up</a>
+			<a class="btn btn-info" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign In</a>
 		<a class="btn btn-danger navbar-right" ng-show="logoutBtn" ng-click="logout()">Logout</a>
 	</div>
 </div>

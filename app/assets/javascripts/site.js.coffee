@@ -59,6 +59,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.checkSesh = ->
 		$http.get("/logged_in_user.json").success (user) ->
 			console.log user
+			$rootScope.current_user = user
 			$scope.userActive(user)
 
 # hides/shows features if user is authenticated
@@ -83,6 +84,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.signUpBtnNav = true
 			$scope.searchBox = true
 			$scope.addEventBox = false
+			$scope.usernameNav = false
+
 # SEARCH
 	$scope.clearSearch = =>
 		$scope.query = ""
