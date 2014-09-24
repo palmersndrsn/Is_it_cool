@@ -127,6 +127,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			this.show_event_edit = false
 
 
+
+
 	# delete event
 	$scope.deleteEvent = (id, index) ->
 		console.log index
