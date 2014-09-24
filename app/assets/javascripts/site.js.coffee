@@ -81,11 +81,12 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 
 	# delete event
-	$scope.deleteEvent = (index) ->
+	$scope.deleteEvent = (id, index) ->
 		console.log index
-		$http.delete("/events/" + index + ".json").success (data) ->
-			$scope.events.splice($scope.events.indexOf(event),1)
-			console.log $scope.events.indexOf(event)
+		$http.delete("/events/" + id + ".json").success (data) =>
+			$scope.events.splice(index,1)
+			console.log data
+
 
 
 

@@ -73,7 +73,7 @@
 					</form>
 				</div>
 
-				<button ng-click="deleteEvent(event.id)" class="btn btn-danger">Delete</button>
+				<button ng-click="deleteEvent(event.id, events.indexOf(event))" class="btn btn-danger">Delete</button>
 					<br>
 					<!-- <label></label> -->
 					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
@@ -86,8 +86,6 @@
 						<p>The Ratio: {{review.ratio}}</p>
 						<p>The Grime: {{review.grime}}</p>
 						<p>{{review.body}}</p>
-						<button ng-click="editReview()" class="btn">Edit</button>
-						<button ng-click="deleteReview()" class="btn btn-danger">Delete</button>
 						<br>
 					</div>
 
