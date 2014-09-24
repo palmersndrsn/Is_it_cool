@@ -8,9 +8,9 @@
 		</div>
 	</div>
 </div>
-
+<!-- LEFT DIV -->
 <div class="row">
-
+<!-- SEARCH -->
 	<div class="col-md-6 col-xs-12 box">
 		<div class="row">
 			<div id="one" class="col-md-12 box">
@@ -21,7 +21,7 @@
 				</form>
 			</div>
 		</div>
-
+<!-- SIGN IN OR UP -->
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 					<form ng-submit="addSession(user)" ng-show="show_sign_in">
@@ -45,7 +45,7 @@
 
 			</div><!-- close  -->
 		</div><!-- close row -->
-
+<!-- ADD NEW EVENT -->
 		<div class="row">
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="newEvent(event)">
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	</div>
-
+<!-- RIGHT DIV -->
 	<div id="two" class="col-md-6 col-xs-12 box">
 	<!-- events -->
 		<!-- need to add order by tweet count  -->
@@ -71,7 +71,7 @@
 				<p>{{event.desc}}</p>
 				<p>{{event.loc}}</p>
 				<p>TESTING - {{event.id}}</p>
-				<!-- <label></label> -->
+				<!-- EDIT EVENT -->
 				<button class="btn btn-info" ng-click="editEvent(event)">Edit Event</button>
 				<div ng-show="show_event_edit">
 					<form ng-submit="editEvent(eventEdit, event.id)">
@@ -88,7 +88,7 @@
 					<!-- <label></label> -->
 					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
 					<div ng-show="show_reviews">
-
+					<button class="btn btn-info" ng-click="hideReviews()"></button>
 					<!-- need to add user name -->
 					<div ng-repeat="review in reviews">
 						<h3>{{review.cool}}</h3>
@@ -98,7 +98,7 @@
 						<br>
 					</div>
 
-						<div>
+						<div class="review-form">
 
  							<button class="btn btn-success" ng-click = "showReviewForm()">Add a Review</button>
 						  <div ng-show="show_review_form">

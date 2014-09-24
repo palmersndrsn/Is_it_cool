@@ -37,6 +37,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	# should check for current user
 	$scope.show_sign_in = true
 
+
 	$scope.reviews = []
 	$scope.review = {}
 
@@ -111,6 +112,9 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			console.log data
 
 	# hide/show
+
+	$scope.hideReviews = ->
+		$scope.show_reviews = false
 
 	$scope.showReviewForm = ->
 		$scope.show_review_form = true

@@ -5,9 +5,6 @@ class EventsController < ApplicationController
   respond_to :json, :html
 
   def index
-    results = twitter_call "#fdlbc"
-    # p results.length
-    p results
     respond_with Event.all
   end
 
@@ -18,11 +15,10 @@ class EventsController < ApplicationController
 
 
 
-    p hashtag
+     p hashtag
 
-    results = twitter_call hashtag[:hashtag]
+    # results = twitter_call hashtag[:hashtag]
 
-    p results.class
 
     respond_with Event.create(new_event)
 
