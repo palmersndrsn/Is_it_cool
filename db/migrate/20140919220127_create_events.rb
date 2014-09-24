@@ -6,10 +6,10 @@ class CreateEvents < ActiveRecord::Migration
       t.string :hashtag
       t.string :desc
       t.string :loc
-      t.string :lat
-      t.string :long
+      t.integer :lat
+      t.integer :long
       t.string :tweet_count
-      t.string :tweet_rating
+      t.string :date
 
       t.timestamps
     end

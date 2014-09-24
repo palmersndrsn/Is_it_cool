@@ -38,7 +38,14 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		$http.post("/login.json", {user: loginUser}).success (user) ->
 			$rootScope.current_user = user
 			console.log user
+			$scope.user = ""
+			# need to build this up
+			$scope.showAddEvent()
+			$scope.sessionActive(user)
 			# this is when the user is logged in
+
+
+	$scope.sessionActive = (user) ->
 
 
 

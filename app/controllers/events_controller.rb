@@ -8,16 +8,28 @@ class EventsController < ApplicationController
     respond_with Event.all
   end
 
-  def create # way more to do
+  def create # need to add dates and geo location
 
     hashtag = params.require(:event).permit(:hashtag)
-    new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc)
-
-    p hashtag
-
     results = twitter_call hashtag[:hashtag]
+    tweet_count = results.to_a.length
 
-    p results[:builder][:statuses]
+
+    loc = params.require(:event).permit(:loc)
+    geo = Geocoder.coordinates(loc)
+
+
+    new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc, :date)
+
+
+    new_event[:tweet_count] = tweet_count
+
+    new_event[:lat]  = geo[0]
+    new_event[:long] = geo[1]
+    # p geo
+
+    p geo[0]
+
 
     respond_with Event.create(new_event)
 
@@ -32,10 +44,10 @@ class EventsController < ApplicationController
     p new_info
 
     @event.update_attributes(
-          :name    => new_info[:name],
-          :hashtag => new_info[:hashtag],
-          :desc    => new_info[:desc],
-          :loc     => new_info[:loc])
+      :name    => new_info[:name],
+      :hashtag => new_info[:hashtag],
+      :desc    => new_info[:desc],
+      :loc     => new_info[:loc])
 
     render json: @event
 

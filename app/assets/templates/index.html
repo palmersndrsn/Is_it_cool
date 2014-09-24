@@ -52,9 +52,10 @@
 				<form ng-submit="newEvent(event)">
 					<h1 class="header">POST SOMETHING</h1>
 					<input ng-model="event.name" class="form-control" required="true" type="text" placeholder="name">
-					<input ng-model="event.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
+					<input ng-model="event.hashtag" class="form-control" required="true" type="text" placeholder="#hashtag">
 					<input ng-model="event.desc" class="form-control" required="true" type="text" placeholder="short description">
 					<input ng-model="event.loc" class="form-control" required="true" type="text" placeholder="address">
+					<input ng-model="event.date" class="form-control" required="true" type="text" placeholder="date">
 					<button class="btn">Submit</button>
 				</form>
 
@@ -68,10 +69,11 @@
 		<div class="events_list" ng-repeat="event in events | filter:query ">
 			<div id="event_tn" class="thumbnail">
 				<h3>{{event.name}}</h3>
-				<h4>{{event.hashtag}}</h4>
-				<p>{{event.desc}}</p>
-				<p>{{event.loc}}</p>
-				<p>TESTING - {{event.id}}</p>
+				<h4>#{{event.hashtag}}</h4>
+				<h5>Tweet Count: {{event.tweet_count}}</h5>
+				<p>Description: {{event.desc}}</p>
+				<p>Location: {{event.loc}}</p>
+
 				<!-- EDIT EVENT -->
 				<button class="btn btn-info" ng-click="editEvent(event)">Edit Event</button>
 				<div ng-show="show_event_edit">

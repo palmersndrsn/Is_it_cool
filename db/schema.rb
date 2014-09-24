@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20140919221410) do
     t.string   "hashtag"
     t.string   "desc"
     t.string   "loc"
-    t.string   "lat"
-    t.string   "long"
+    t.integer  "lat"
+    t.integer  "long"
     t.string   "tweet_count"
-    t.string   "tweet_rating"
+    t.string   "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
