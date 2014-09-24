@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    hashtag = params.require(:event).permit(:hashtag)
+    loc = params.require(:event).permit(:hashtag)
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc)
     respond_with Event.create(new_event)
 
@@ -20,17 +20,29 @@ class EventsController < ApplicationController
   end
 
   def update
-
+    new_info = params.require(:event).permit(:name, :hashtag, :desc, :loc)
     id = params[:id]
     event = Event.find_by_id(id)
     p "route works"
 
-    p event
+    p new_info
 
-    respond_with
+    event.update_attributes(
+          :name    => update_post[:name],
+          :hashtag => update_post[:hashtag],
+          :desc    => update_post[:desc],
+          :loc     => update_post[:loc])
+
+    render json: new_info
+
   end
 
   def destroy
+    event = Event.find_by_id(params[:id])
+    p "SHOULD BE THE EVENT"
+    p event
+    respond_with event
+    event.destroy()
   end
 
   private

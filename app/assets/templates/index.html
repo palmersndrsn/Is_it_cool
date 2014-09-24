@@ -69,11 +69,11 @@
 						<input ng-model="eventEdit.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
 						<input ng-model="eventEdit.desc" class="form-control" required="true" type="text" placeholder="short description">
 						<input ng-model="eventEdit.loc" class="form-control" required="true" type="text" placeholder="address">
-						<button class="btn">Submit</button>
+						<button class="btn btn-success">Submit</button>
 					</form>
 				</div>
 
-				<button ng-click="deleteEvent(event)" class="btn btn-danger">Delete</button>
+				<button ng-click="deleteEvent(event.id)" class="btn btn-danger">Delete</button>
 					<br>
 					<!-- <label></label> -->
 					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>

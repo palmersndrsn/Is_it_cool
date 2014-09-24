@@ -19,12 +19,11 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.review = {}
 
 
-# get all events
-	$scope.getEvents = ->
-		$http.get("/events.json").success (data) ->
-			$scope.events = data
+# SEARCH
+	$scope.clearSearch = =>
+		$scope.query = ""
 
-	$scope.getEvents()
+# REVIEWS
 
   # get reviews
 	$scope.getReviews = (event) ->
@@ -34,15 +33,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
 			$scope.reviews = data
 
-
-# clear search bar
-	$scope.clearSearch = =>
-		$scope.query = ""
-
-#clicking on event to see more
-
 # adding a review to an event
-
 	$scope.addReview = (review, index) ->
 		review.event_id = index
 		$http.post("/events/" + index + "/reviews.json", {review: review}).success (data) ->
@@ -50,6 +41,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.review = {}
 			$scope.show_review_form = false
 
+
+# SIGNUP
 # user signup
 	$scope.signUp = (newUser) ->
 		console.log newUser
@@ -57,6 +50,15 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.user = {}
 			$scope.users = data
 			console.log data
+
+# EVENTS
+
+# get all events
+	$scope.getEvents = ->
+		$http.get("/events.json").success (data) ->
+			$scope.events = data
+
+	$scope.getEvents()
 
 # new event
 	$scope.newEvent = (event) ->
@@ -67,8 +69,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			console.log data
 
 
-
-		# edit event
+	# edit event
 	$scope.editEvent = (event, index) ->
 		this.show_events = true
 		console.log $scope.review
@@ -78,10 +79,11 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 
 	# delete event
-	$scope.deleteEvent =(event) ->
-		$http.delete("url", event).success (data)->
-			# $scope.NAMEOFARRAY.splice(scope.array.indexOf(event),1)
-		console.log $scope.review
+	$scope.deleteEvent = (index) ->
+		console.log index
+		$http.delete("/events/" + index + ".json").success (data) ->
+			$scope.events.splice(scope.array.indexOf(event),1)
+
 
 
 #  event review butt
