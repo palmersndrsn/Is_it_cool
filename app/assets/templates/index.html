@@ -96,8 +96,13 @@
 					     <form ng-submit="addReview(newReview, event.id)">
 					     	<label>Review</label>
 					     	<input type="text" class="form-control" ng-model="newReview.body" placeholder="140 characters please">
-					     	<label>Cool or Not?</label>
-					     	<input type="text" class="form-control" ng-model="newReview.cool" placeholder="is it cool?">
+					     	<!--  -->
+								<select ng-model="newReview.cool" class="form-control options">
+				          <option value="" disabled selected>Cool or Not?</option>
+				          <option>Cool</option>
+				          <option>Not Cool</option>
+				        </select>
+					     	<!--  -->
 					     	<label>The Ratio: {{newReview.ratio}}% Dudes</label>
 					     	<input type="range" ng-model="newReview.ratio" placeholder="the ratio" min="1" max="100">
 					     	<label>The Grime:  {{newReview.grime}}% Grime</label>

@@ -5,10 +5,14 @@ class EventsController < ApplicationController
   respond_to :json, :html
 
   def index
+    results = twitter_call "fdlbc"
+    # p results.length
+    p results
     respond_with Event.all
   end
 
   def create
+
     loc = params.require(:event).permit(:hashtag)
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc)
     respond_with Event.create(new_event)
@@ -17,6 +21,7 @@ class EventsController < ApplicationController
   end
 
   def show
+
   end
 
   def update

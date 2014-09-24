@@ -64,8 +64,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.newEvent = (event) ->
 		console.log event
 		$http.post("/events.json", event).success (data) =>
-			$scope.event = {}
-			$scope.events = data
+			$scope.event = ""
+			$scope.events.push data
 			console.log data
 
 
