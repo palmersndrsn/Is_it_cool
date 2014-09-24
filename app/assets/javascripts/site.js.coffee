@@ -21,7 +21,16 @@ isItCool.controller "MainCtrl", ["$scope", "$http", "$rootScope", ($scope, $http
 			$rootScope.current_user = user
 ]
 
-isItCool.controller "SessionsCtrl", ["$scope", "$http", "$rootScope", "$location", ($scope, $http, $rootScope, $location) ->
+isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", ($scope, $http, $rootScope, $location) ->
+
+# need logic for hiding add post and sign in
+	# should check for current user
+	$scope.show_sign_in = true
+
+
+	$scope.reviews = []
+	$scope.review = {}
+# AUTH
 
 	$scope.addSession = (loginUser) ->
 		console.log "hi"
@@ -31,17 +40,7 @@ isItCool.controller "SessionsCtrl", ["$scope", "$http", "$rootScope", "$location
 			console.log user
 			# this is when the user is logged in
 
-]
 
-isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
-
-# need logic for hiding add post and sign in
-	# should check for current user
-	$scope.show_sign_in = true
-
-
-	$scope.reviews = []
-	$scope.review = {}
 
 
 # SEARCH
