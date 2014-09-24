@@ -13,8 +13,17 @@ class EventsController < ApplicationController
 
   def create
 
-    loc = params.require(:event).permit(:hashtag)
+    hashtag = params.require(:event).permit(:hashtag)
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc)
+
+
+
+    p hashtag
+
+    results = twitter_call hashtag[:hashtag]
+
+    p results.class
+
     respond_with Event.create(new_event)
 
 
