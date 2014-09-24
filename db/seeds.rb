@@ -35,25 +35,41 @@ user123 = User.create({username: "katie45",
 
 # events
 
-lebwoski = Event.create({name: "Lebwoski Fest",
+lebwoski = Event.create({name: "Lebwoski Fest SF",
 	desc: "The Dudes Abide",
-	hashtag: "#LebwoskiFest",
-	loc: "900 King Drive, Daily City CA"})
+	hashtag: "LebwoskiFest",
+	loc: "900 King Drive, Daily City CA",
+	date: "October 12th 2014",
+	lat: 37.6511005,
+	long: -122.467991,
+	tweet_count: "100"})
 
 cochella = Event.create({name: "Cochella",
 	desc: "Massive Music Festival",
-	hashtag: "#cochella",
-	loc: "81-800 Avenue 51, Indio, CA 92201"})
+	hashtag: "#Cochella",
+	loc: "81-800 Avenue 51, Indio, CA 92201",
+	date: "October 12th ",
+	lat: 33.6784492,
+	long: -116.237155,
+	tweet_count: "100"})
 
 hiero = Event.create({name: "Hiero Day",
 	desc: "Hieroglyphics Free Concert in Oakland",
 	hashtag: "hieroday2014",
-	loc: "95 Linden st, Oakland CA"})
+	loc: "95 Linden st, Oakland CA",
+	date: "September 1st 2014",
+	lat: 37.79962,
+	long: -122.2876646,
+	tweet_count: "33"})
 
 rickybobbydj = Event.create({name: "Ricky Bobby's DJ Night",
 	desc: "Hey you should come to my DJ night!",
-	hashtag: "#rickydj",
-	loc: "Some club you've never heard of"})
+	hashtag: "rickydj",
+	loc: "Some club you've never heard of",
+	date: "Tuesday Night!",
+	lat: 37.7598648,
+	long: -122.4147977,
+	tweet_count: "2"})
 
 # reviews
 

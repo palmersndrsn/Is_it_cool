@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
 
-
-  get 'site/index'
+  get '/logged_in_user', to: 'sessions#logged_in_user'
+  post '/login', to: 'sessions#create'
 
   match "*path", to: "site#index", via: "get"
-
+  get 'site/index'
   root 'site#index'
 
 end
