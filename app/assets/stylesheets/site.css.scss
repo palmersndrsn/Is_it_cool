@@ -5,6 +5,15 @@ body {
 	text-align: center;
 }
 
+#new_event {
+	margin-top: 100px;
+}
+
+.error {
+	color: white;
+
+}
+
 .review_search {
 	max-width: 300px;
 }
@@ -22,10 +31,11 @@ body {
 	/*background-color: red;*/
 	height: 500px;
 
+
 }
 #two {
 	/*background-color: blue;*/
-	height: 1000px;
+	min-height: 1000px;
 	margin-top: 1px;
 }
 

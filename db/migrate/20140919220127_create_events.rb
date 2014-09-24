@@ -6,8 +6,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :hashtag
       t.string :desc
       t.string :loc
-      t.integer :lat
-      t.integer :long
+      t.float :lat
+      t.float :long
       t.string :tweet_count
       t.string :date
 

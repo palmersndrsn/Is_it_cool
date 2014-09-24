@@ -14,7 +14,4 @@ class Event < ActiveRecord::Base
 	validates :desc,
 		:presence => {:message=> 'Field cannot be left blank'}
 
-	validates :loc,
-		:presence => {:message=> 'Field cannot be left blank'}
-
 end

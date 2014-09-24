@@ -46,7 +46,7 @@ lebwoski = Event.create({name: "Lebwoski Fest SF",
 
 cochella = Event.create({name: "Cochella",
 	desc: "Massive Music Festival",
-	hashtag: "#Cochella",
+	hashtag: "cochella",
 	loc: "81-800 Avenue 51, Indio, CA 92201",
 	date: "October 12th ",
 	lat: 33.6784492,
@@ -70,6 +70,15 @@ rickybobbydj = Event.create({name: "Ricky Bobby's DJ Night",
 	lat: 37.7598648,
 	long: -122.4147977,
 	tweet_count: "2"})
+
+allStarBash = Event.create({name: "All Star Bash",
+	desc: "West Coast Drift Party",
+	hashtag: "asb2014",
+	loc: "Willow Springs International Motorsports Park",
+	date: "October 18-19 2014",
+	lat: 34,
+	long: 118,
+	tweet_count: "65"})
 
 # reviews
 
@@ -153,6 +162,8 @@ cochella.reviews << cochellaReview2
 cochella.reviews << cochellaReview3
 
 # events
+
+palmer.events << allStarBash
 
 rickybobby.events << rickybobbydj
 

@@ -13,19 +13,12 @@ class ReviewsController < ApplicationController
 	def create
 
 		new_review = params.require(:review).permit(:body, :cool, :ratio, :grime, :event_id)
-
 		review = Review.create(new_review)
-
 		event = Event.find_by_id(params[:event_id])
 
 		event.reviews << review
 
 		render json: review
-
-		# respond_with [event, review]
-		# puts "THIS IS TEST"
-		# puts test
-
 	end
 
 	def show

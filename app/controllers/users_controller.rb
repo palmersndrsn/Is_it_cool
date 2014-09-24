@@ -6,20 +6,8 @@ class UsersController < ApplicationController
 
   respond_to :json, :html
 
-  def index
-  end
-
   def create
     respond_with User.create(user_params), only: [:id, :email, :username]
-  end
-
-  def show
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

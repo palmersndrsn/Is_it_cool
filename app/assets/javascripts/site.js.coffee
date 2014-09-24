@@ -25,13 +25,19 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 # need logic for hiding add post and sign in
 	# should check for current user
+# FLASH MESSAGES OFF
 	$scope.show_sign_in = true
+	$scope.signInErr = true
+	$scope.signUpErr = true
+	$scope.eventErr = true
+	$scope.authBox = true
 
-
+# INIT REVIEWS
 	$scope.reviews = []
 	$scope.review = {}
 # AUTH
 
+# log in user
 	$scope.addSession = (loginUser) ->
 		console.log "hi"
 		console.log(loginUser)
@@ -43,13 +49,25 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.showAddEvent()
 			$scope.sessionActive(user)
 			# this is when the user is logged in
+			$scope.signInErr = true
+		.error (err) ->
+			$scope.signInErr = false
+
+# checking if current user
+	$scope.checkSesh = ->
+		$http.get("/logged_in_user.json").success (user) ->
+			console.log user
+			$scope.userActive(user)
+
+# hides/shows features if user is authenticated
+	$scope.userActive = (user) ->
+		$scope.activeUser = user
+		$scope.authBox = false
 
 
-	$scope.sessionActive = (user) ->
 
 
-
-
+	$scope.checkSesh()
 # SEARCH
 	$scope.clearSearch = =>
 		$scope.query = ""
@@ -82,6 +100,10 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.newUser = {}
 			$scope.users = data
 			console.log data
+			$scope.signUpErr = true
+		.error (err) ->
+			$scope.signUpErr = false
+
 
 # EVENTS
 
@@ -99,6 +121,9 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.event = ""
 			$scope.events.push data
 			console.log data
+			$scope.eventErr = true
+		.error (err) ->
+			$scope.eventErr = false
 
 
 	# edit event
@@ -112,6 +137,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			this.show_event_edit = false
 
 
+
+
 	# delete event
 	$scope.deleteEvent = (id, index) ->
 		console.log index
@@ -120,6 +147,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			console.log data
 
 	# hide/show
+	$scope.editEventShow = ->
+		this.show_event_edit = true
 
 	$scope.hideReviews = ->
 		this.show_reviews = false
@@ -138,6 +167,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.showAddEvent = ->
 		$scope.show_sign_up = false
 		$scope.show_sign_in = false
+
 
 ]
 
