@@ -118,7 +118,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 	# edit event
 	$scope.editEvent = (event, index) ->
-		this.show_event_edit = true
 		console.log $scope.review
 		console.log index
 		$http.put("/events/" + index + ".json", event).success (data) =>
@@ -137,6 +136,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			console.log data
 
 	# hide/show
+	$scope.editEventShow = ->
+		this.show_event_edit = true
 
 	$scope.hideReviews = ->
 		this.show_reviews = false

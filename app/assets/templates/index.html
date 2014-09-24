@@ -84,7 +84,7 @@
 				<p>Location: {{event.loc}}</p>
 
 				<!-- EDIT EVENT -->
-				<button class="btn btn-info" ng-click="editEvent(event)">Edit Event</button>
+				<button class="btn btn-info" ng-click="editEventShow()">Edit Event</button>
 				<div ng-show="show_event_edit">
 					<form ng-submit="editEvent(eventEdit, event.id)">
 						<input ng-model="eventEdit.name" class="form-control" required="true" type="text" placeholder="name">
