@@ -88,7 +88,6 @@
 					<!-- <label></label> -->
 					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
 					<div ng-show="show_reviews">
-					<button class="btn btn-info" ng-click="hideReviews()"></button>
 					<!-- need to add user name -->
 					<div ng-repeat="review in reviews">
 						<h3>{{review.cool}}</h3>
@@ -99,6 +98,7 @@
 					</div>
 
 						<div class="review-form">
+					<button class="btn btn-info" ng-click="hideReviews()">Hide Reviews</button>
 
  							<button class="btn btn-success" ng-click = "showReviewForm()">Add a Review</button>
 						  <div ng-show="show_review_form">

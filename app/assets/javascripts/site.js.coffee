@@ -114,7 +114,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	# hide/show
 
 	$scope.hideReviews = ->
-		$scope.show_reviews = false
+		this.show_reviews = false
+		console.log "hi"
 
 	$scope.showReviewForm = ->
 		$scope.show_review_form = true
