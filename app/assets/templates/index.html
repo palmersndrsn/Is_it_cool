@@ -51,6 +51,9 @@
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="newEvent(event)">
 					<h1 class="header">POST SOMETHING</h1>
+					<div ng-hide="eventErr" >
+						<p class="error">Error Creating Event Please Try again</p>
+					</div>
 					<input ng-model="event.name" class="form-control" required="true" type="text" placeholder="name">
 					<input ng-model="event.hashtag" class="form-control" required="true" type="text" placeholder="#hashtag">
 					<input ng-model="event.desc" class="form-control" required="true" type="text" placeholder="short description">

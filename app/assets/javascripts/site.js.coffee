@@ -26,6 +26,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 # need logic for hiding add post and sign in
 	# should check for current user
 	$scope.show_sign_in = true
+	$scope.eventErr = true
 
 
 	$scope.reviews = []
@@ -99,6 +100,9 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.event = ""
 			$scope.events.push data
 			console.log data
+			$scope.eventErr = true
+		.error (err) ->
+			$scope.createEventErr()
 
 
 	# edit event
@@ -138,6 +142,10 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.showAddEvent = ->
 		$scope.show_sign_up = false
 		$scope.show_sign_in = false
+
+	$scope.createEventErr = (err) ->
+		console.log "hi"
+		$scope.eventErr = false
 
 ]
 
