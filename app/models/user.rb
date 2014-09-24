@@ -26,10 +26,9 @@ class User < ActiveRecord::Base
 	  self.save!
 	end
 
-	def self.authenticate email, password
-		User.find_by_email(email).try(:authenticate, password)
+	def self.authenticate username, password
+		User.find_by_username(username).try(:authenticate,password)
 	end
-
 
 
 end

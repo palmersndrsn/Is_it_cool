@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :users, except: [:new, :edit]
 
+  post '/login', to: 'session#create'
+  get '/logged_in_user', to: 'session#logged_in_user'
 
   get 'site/index'
 

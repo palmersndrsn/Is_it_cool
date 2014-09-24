@@ -13,7 +13,29 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 
 ]
 
+isItCool.controller "MainCtrl", ["$scope", "$http", "$rootScope", ($scope, $http, $rootScope) ->
+	if !$scope.current_user
+		console.log("checking for current_user")
+		$http.get("/logged_in_user.json").success (data) =>
+			console.log "Welcome,", user
+			$rootScope.current_user = user
+]
+
+isItCool.controller "SessionsCtrl", ["$scope", "$http", "$rootScope", "$location", ($scope, $http, $rootScope, $location) ->
+	$scope.addSession = (loginUser) ->
+		console.log(loginUser)
+		$http.post("/login.json", {user: loginUser}).success (user) ->
+			$rootScope.current_user = user
+			console.log user
+			# this is when the user is logged in
+
+]
+
 isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
+
+# need logic for hiding add post and sign in
+	# should check for current user
+	$scope.show_sign_in = true
 
 	$scope.reviews = []
 	$scope.review = {}
@@ -40,6 +62,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.reviews.push data
 			$scope.review = {}
 			$scope.show_review_form = false
+			$scope.review = ""
 
 
 # SIGNUP
@@ -47,7 +70,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 	$scope.signUp = (newUser) ->
 		console.log newUser
 		$http.post("/users.json", {user: newUser}).success (data) =>
-			$scope.user = {}
+			$scope.newUser = {}
 			$scope.users = data
 			console.log data
 
@@ -87,35 +110,14 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 			$scope.events.splice(index,1)
 			console.log data
 
+	# hide/show
 
-
-
-#  event review butt
-		# need to add logic for expanding event for user to review
-
-
-	# limit height and have the events scroll
-
-
-	# twitter api logic to search by hashtag and parse
-
-
-	# need to add function for showing single event and map and hiding everything else
-
-
-
-	$scope.showReviewForm =->
+	$scope.showReviewForm = ->
 		$scope.show_review_form = true
 
-	# edit review
-	$scope.editReview = ->
-		console.log $scope.review
-
-
-	# delete review
-	$scope.deleteReview = ->
-		console.log $scope.review
-
+	$scope.showSignUp = ->
+		$scope.show_sign_up = true
+		$scope.show_sign_in = false
 
 ]
 
