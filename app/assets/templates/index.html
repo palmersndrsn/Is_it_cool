@@ -64,7 +64,6 @@
 				<button class="btn btn-info" ng-click="editEvent(event)">Edit Event</button>
 				<div ng-show="show_event_edit">
 					<form ng-submit="editEvent(eventEdit, event.id)">
-						<label>Edit Event</label>
 						<input ng-model="eventEdit.name" class="form-control" required="true" type="text" placeholder="name">
 						<input ng-model="eventEdit.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
 						<input ng-model="eventEdit.desc" class="form-control" required="true" type="text" placeholder="short description">
@@ -79,7 +78,6 @@
 					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
 					<div ng-show="show_reviews">
 
-					<h3>Reviews</h3>
 					<!-- need to add user name -->
 					<div ng-repeat="review in reviews">
 						<h3>{{review.cool}}</h3>
