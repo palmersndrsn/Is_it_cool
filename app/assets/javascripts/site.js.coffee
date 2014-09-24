@@ -71,12 +71,13 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	# edit event
 	$scope.editEvent = (event, index) ->
-		this.show_events = true
+		this.show_event_edit = true
 		console.log $scope.review
 		console.log index
 		$http.put("/events/" + index + ".json", event).success (data) =>
 			console.log data
 			this.event = data
+			this.show_event_edit = false
 
 
 	# delete event

@@ -62,7 +62,7 @@
 				<p>TESTING - {{event.id}}</p>
 				<!-- <label></label> -->
 				<button class="btn btn-info" ng-click="editEvent(event)">Edit Event</button>
-				<div ng-show="show_events">
+				<div ng-show="show_event_edit">
 					<form ng-submit="editEvent(eventEdit, event.id)">
 						<label>Edit Event</label>
 						<input ng-model="eventEdit.name" class="form-control" required="true" type="text" placeholder="name">
