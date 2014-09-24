@@ -163,6 +163,8 @@ cochella.reviews << cochellaReview3
 
 # events
 
+palmer.events << allStarBash
+
 rickybobby.events << rickybobbydj
 
 the_dude.events << lebwoski
