@@ -76,6 +76,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 		console.log index
 		$http.put("/events/" + index + ".json", event).success (data) =>
 			console.log data
+			this.event = data
 
 
 	# delete event
@@ -83,7 +84,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 		console.log index
 		$http.delete("/events/" + index + ".json").success (data) ->
 			$scope.events.splice($scope.events.indexOf(event),1)
-			console.log $scope.events.indexOf(event) + 1
+			console.log $scope.events.indexOf(event)
 
 
 

@@ -32,7 +32,7 @@ class EventsController < ApplicationController
           :desc    => new_info[:desc],
           :loc     => new_info[:loc])
 
-    render json: new_info
+    render json: @event
 
   end
 
