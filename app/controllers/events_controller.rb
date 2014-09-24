@@ -15,14 +15,12 @@ class EventsController < ApplicationController
 
     p hashtag
 
-    # results = twitter_call hashtag[:hashtag]
+    results = twitter_call hashtag[:hashtag]
+
+    p results[:builder][:statuses]
 
     respond_with Event.create(new_event)
 
-
-  end
-
-  def show
 
   end
 

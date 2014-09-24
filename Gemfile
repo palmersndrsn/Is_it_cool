@@ -39,6 +39,7 @@ gem 'twitter'
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
+	gem 'awesome_print'
 	gem 'pry'
 	gem 'pry-rails'
 	gem 'dotenv-rails'

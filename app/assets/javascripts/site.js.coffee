@@ -22,7 +22,9 @@ isItCool.controller "MainCtrl", ["$scope", "$http", "$rootScope", ($scope, $http
 ]
 
 isItCool.controller "SessionsCtrl", ["$scope", "$http", "$rootScope", "$location", ($scope, $http, $rootScope, $location) ->
+
 	$scope.addSession = (loginUser) ->
+		console.log "hi"
 		console.log(loginUser)
 		$http.post("/login.json", {user: loginUser}).success (user) ->
 			$rootScope.current_user = user
@@ -115,13 +117,20 @@ isItCool.controller "siteCtrl", ["$scope", "$http", ($scope, $http) ->
 
 	$scope.hideReviews = ->
 		this.show_reviews = false
-		console.log "hi"
 
 	$scope.showReviewForm = ->
 		$scope.show_review_form = true
 
 	$scope.showSignUp = ->
 		$scope.show_sign_up = true
+		$scope.show_sign_in = false
+
+	$scope.showSignIn = ->
+		$scope.show_sign_up = false
+		$scope.show_sign_in = true
+
+	$scope.showAddEvent = ->
+		$scope.show_sign_up = false
 		$scope.show_sign_in = false
 
 ]
