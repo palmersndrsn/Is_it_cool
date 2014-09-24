@@ -21,17 +21,16 @@ class EventsController < ApplicationController
 
   def update
     new_info = params.require(:event).permit(:name, :hashtag, :desc, :loc)
-    id = params[:id]
-    event = Event.find_by_id(id)
+    @event = Event.find_by_id(params[:id])
     p "route works"
 
     p new_info
 
-    event.update_attributes(
-          :name    => update_post[:name],
-          :hashtag => update_post[:hashtag],
-          :desc    => update_post[:desc],
-          :loc     => update_post[:loc])
+    @event.update_attributes(
+          :name    => new_info[:name],
+          :hashtag => new_info[:hashtag],
+          :desc    => new_info[:desc],
+          :loc     => new_info[:loc])
 
     render json: new_info
 
