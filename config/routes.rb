@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/logged_in_user', to: 'sessions#logged_in_user'
   post '/login', to: 'sessions#create'
 
+  get '/logout', to: 'sessions#destroy'
+
   match "*path", to: "site#index", via: "get"
   get 'site/index'
   root 'site#index'

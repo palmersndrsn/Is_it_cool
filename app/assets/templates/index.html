@@ -6,13 +6,19 @@
 			<a class="navbar-brand">¯\_(ツ)_/¯</a>
 
 		</div>
+		<!-- not working -->
+			<div ng-show="usernameNav"><p>Welcome, {{username}}</p></div>
+			<a class="btn btn-info" ng-click="showSearch()">Search</a>
+			<a class="btn btn-info" ng-show="eventBtnNav" ng-click="showAddEvent()">Add Event</a>
+			<a class="btn btn-info" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign Up</a>
+		<a class="btn btn-danger navbar-right" ng-show="logoutBtn" ng-click="logout()">Logout</a>
 	</div>
 </div>
 <!-- LEFT DIV -->
 <div class="row">
 <!-- SEARCH -->
 	<div class="col-md-6 col-xs-12 box">
-		<div class="row">
+		<div class="row" ng-show="searchBox">
 			<div id="one" class="col-md-12 box">
 				<h1 class="header">IS IT COOL?</h1>
 				<form ng-submit="clearSearch()">
@@ -53,7 +59,7 @@
 			</div><!-- close  -->
 		</div><!-- close row -->
 <!-- ADD NEW EVENT -->
-		<div class="row">
+		<div class="row" ng-show="addEventBox">
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="newEvent(event)">
 					<h1 class="header" id="new_event">POST SOMETHING</h1>
