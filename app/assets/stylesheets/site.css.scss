@@ -3,6 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
 	text-align: center;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+
+}
+
+.underline {
+	height: 2px;
+	width: 200px;
+	background-color: rgb(30, 130, 76);
+	margin: auto;
+}
+
+
+.event_name {
+	color: rgb(30, 130, 76)
+}
+
+.btn {
+	margin-bottom: 5px !important;
 }
 
 
@@ -11,6 +29,7 @@ body {
 }
 
 .error {
+	letter-spacing: .3em;
 	color: white;
 
 }
@@ -33,7 +52,7 @@ body {
 	margin-top: 50px;
 	min-height: 1000px;
 	position: fixed;
-	max-width: 700px;
+	max-width: 750px;
 
 }
 @media (max-width: 700px) {

@@ -5,8 +5,9 @@
 		<div class="navbar-header">
 			<a class="navbar-brand">¯\_(ツ)_/¯</a>
 			<div class="navbar-brand" ng-show="usernameNav"><p>Welcome, {{current_user.username}}</p></div>
-		</div>
+			</div>
 		<!-- not working -->
+
 			<a class="btn btn-info navbar-right" ng-click="showSearch()">Search</a>
 			<a class="btn btn-info navbar-right" ng-show="eventBtnNav" ng-click="showAddEvent()">Add Event</a>
 			<a class="btn btn-info navbar-right" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign In</a>
@@ -82,16 +83,21 @@
 		<!-- need to add order by tweet count  -->
 		<div class="events_list" ng-repeat="event in events | filter:query ">
 			<div id="event_tn" class="thumbnail">
-				<h3>{{event.name}}</h3>
-				<h4>#{{event.hashtag}}</h4>
-				<h5>Tweet Count: {{event.tweet_count}}</h5>
-				<p>Description: {{event.desc}}</p>
-				<p>Location: {{event.loc}}</p>
-				<p>{{event.date}}</p>
-
+				<div class="left_event">
+					<h3 class="event_name">{{event.name}}</h3>
+					<div class="underline"></div>
+					<h4>#{{event.hashtag}}</h4>
+					<p>Description: {{event.desc}}</p>
+				</div>
+				<div class="right_event">
+					<h5>Tweet Count: {{event.tweet_count}}</h5>
+					<p>Location: {{event.loc}}</p>
+					<p>{{event.date}}</p>
+					<p>Created by: {{event.user.username}}</p>
+				</div>
 				<!-- EDIT EVENT -->
 				<div ng-show="current_user.id == event.user_id">
-					<button class="btn btn-info" ng-click="editEventShow()">Edit</button>
+					<button class="btn btn-info btn-group" ng-click="editEventShow()">Edit</button>
 					<div ng-show="show_event_edit">
 						<form ng-submit="editEvent(eventEdit, event.id)">
 							<input ng-model="eventEdit.name" class="form-control" required="true" type="text" placeholder="name">
@@ -102,9 +108,9 @@
 						</form>
 					</div>
 					<!-- DELETE -->
-					<button ng-click="deleteEvent(event.id, events.indexOf(event))" class="btn btn-danger">Delete</button>
+					<button ng-click="deleteEvent(event.id, events.indexOf(event))" class="btn btn-danger btn-group">Delete</button>
 				</div>
-					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
+					<button class="btn btn-primary btn-group" ng-click="getReviews(event)">View Reviews</button>
 					<div ng-show="show_reviews">
 					<!-- need to add user name -->
 					<div ng-repeat="review in reviews">
