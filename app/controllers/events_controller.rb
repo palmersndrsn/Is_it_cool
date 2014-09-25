@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   respond_to :json, :html
 
   def index
-    respond_with Event.all
+    respond_with Event.all.to_json :include => :users
   end
 
   def create # need to add dates and geo location

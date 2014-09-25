@@ -37,6 +37,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 
 
+
+
 # INIT REVIEWS
 	$scope.reviews = []
 	$scope.review = {}
@@ -119,6 +121,8 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.users = data
 			console.log data
 			$scope.signUpErr = true
+			$scope.show_sign_up = false
+			$scope.show_sign_in = true
 		.error (err) ->
 			$scope.signUpErr = false
 

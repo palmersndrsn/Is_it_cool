@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if @user
       session[:user_id] = @user.id
       respond_to do |format|
-        format.json {render :json => @user, :only => [:username]}
+        format.json {render :json => @user, :only => [:username, :id]}
       end
     else
       render json: {}, status: 400
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def logged_in_user
     if session[:user_id]
-      render json: User.find_by_id(session[:user_id]), only: [:username]
+      render json: User.find_by_id(session[:user_id]), only: [:username, :id]
     end
   end
 
