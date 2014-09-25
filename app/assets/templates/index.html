@@ -1,18 +1,23 @@
 <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
 
-<div class="navbar navbar-inverse" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">¯\_(ツ)_/¯</a>
-
+			<div class="navbar-brand" ng-show="usernameNav"><p>Welcome, {{current_user.username}}</p></div>
 		</div>
+		<!-- not working -->
+			<a class="btn btn-info navbar-right" ng-click="showSearch()">Search</a>
+			<a class="btn btn-info navbar-right" ng-show="eventBtnNav" ng-click="showAddEvent()">Add Event</a>
+			<a class="btn btn-info navbar-right" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign In</a>
+			<a class="btn btn-danger navbar-right" ng-show="logoutBtn" ng-click="logout()">Logout</a>
 	</div>
 </div>
 <!-- LEFT DIV -->
-<div class="row">
+<div class="row fixed">
 <!-- SEARCH -->
 	<div class="col-md-6 col-xs-12 box">
-		<div class="row">
+		<div class="row" ng-show="searchBox">
 			<div id="one" class="col-md-12 box">
 				<h1 class="header">IS IT COOL?</h1>
 				<form ng-submit="clearSearch()">
@@ -53,7 +58,7 @@
 			</div><!-- close  -->
 		</div><!-- close row -->
 <!-- ADD NEW EVENT -->
-		<div class="row">
+		<div class="row" ng-show="addEventBox">
 			<div id="one" class="col-md-12 box">
 				<form ng-submit="newEvent(event)">
 					<h1 class="header" id="new_event">POST SOMETHING</h1>

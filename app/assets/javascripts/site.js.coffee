@@ -30,7 +30,12 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.signInErr = true
 	$scope.signUpErr = true
 	$scope.eventErr = true
-	$scope.authBox = true
+	$scope.authBox = false
+	$scope.searchBox = true
+	$scope.addEventBox = false
+	$scope.signUpBtnNav = true
+
+
 
 # INIT REVIEWS
 	$scope.reviews = []
@@ -45,10 +50,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$rootScope.current_user = user
 			console.log user
 			$scope.user = ""
-			# need to build this up
-			$scope.showAddEvent()
-			$scope.sessionActive(user)
-			# this is when the user is logged in
+			$scope.userActive(user)
 			$scope.signInErr = true
 		.error (err) ->
 			$scope.signInErr = false
@@ -57,17 +59,33 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.checkSesh = ->
 		$http.get("/logged_in_user.json").success (user) ->
 			console.log user
+			$rootScope.current_user = user
 			$scope.userActive(user)
 
 # hides/shows features if user is authenticated
 	$scope.userActive = (user) ->
 		$scope.activeUser = user
 		$scope.authBox = false
-
+		$scope.usernameNav = true
+		$scope.logoutBtn = true
+		$scope.eventBtnNav = true
+		$scope.signUpBtnNav = false
+		$scope.searchBox = true
 
 
 
 	$scope.checkSesh()
+
+	$scope.logout = ->
+		$http.get("/logout.json").success ->
+			console.log "signed out"
+			$scope.logoutBtn = false
+			$scope.eventBtnNav = false
+			$scope.signUpBtnNav = true
+			$scope.searchBox = true
+			$scope.addEventBox = false
+			$scope.usernameNav = false
+
 # SEARCH
 	$scope.clearSearch = =>
 		$scope.query = ""
@@ -146,6 +164,25 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.events.splice(index,1)
 			console.log data
 
+	# HIDE/SHOW BOXES
+	$scope.showSearch = ->
+		$scope.searchBox = true
+		$scope.authBox = false
+		$scope.addEventBox = false
+		console.log "show Search"
+
+	$scope.showAuthBox = ->
+		$scope.authBox = true
+		$scope.searchBox = false
+		$scope.addEventBox = false
+		console.log "show Auth"
+
+	$scope.showAddEvent = ->
+		$scope.addEventBox = true
+		$scope.searchBox = false
+		$scope.authBox = false
+		console.log "show Event"
+
 	# hide/show
 	$scope.editEventShow = ->
 		this.show_event_edit = true
@@ -164,9 +201,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		$scope.show_sign_up = false
 		$scope.show_sign_in = true
 
-	$scope.showAddEvent = ->
-		$scope.show_sign_up = false
-		$scope.show_sign_in = false
 
 
 ]
