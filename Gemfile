@@ -34,7 +34,11 @@ gem 'angular-rails-templates'
 # gem 'unicorn'
 gem 'geocoder'
 
+gem 'pg'
+
 gem 'twitter'
+
+gem 'rails_12factor'
 
 gem 'bcrypt', '~> 3.1.7'
 
