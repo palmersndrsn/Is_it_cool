@@ -34,8 +34,6 @@ gem 'angular-rails-templates'
 # gem 'unicorn'
 gem 'geocoder'
 
-gem 'pg'
-
 gem 'twitter'
 
 gem 'rails_12factor'
