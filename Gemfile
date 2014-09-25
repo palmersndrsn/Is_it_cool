@@ -38,10 +38,11 @@ gem 'pg'
 
 gem 'twitter'
 
+gem 'rails_12factor'
+
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
-	gem 'rails_12factor'
 	gem 'awesome_print'
 	gem 'pry'
 	gem 'pry-rails'
