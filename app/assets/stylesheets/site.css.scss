@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
 	text-align: center;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+
+}
+
+
+.event_name {
+	color: rgb(30, 130, 76)
 }
 
 .btn {
@@ -38,7 +45,7 @@ body {
 	margin-top: 50px;
 	min-height: 1000px;
 	position: fixed;
-	max-width: 700px;
+	max-width: 750px;
 
 }
 @media (max-width: 700px) {

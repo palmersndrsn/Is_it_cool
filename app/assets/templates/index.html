@@ -5,8 +5,9 @@
 		<div class="navbar-header">
 			<a class="navbar-brand">¯\_(ツ)_/¯</a>
 			<div class="navbar-brand" ng-show="usernameNav"><p>Welcome, {{current_user.username}}</p></div>
-		</div>
+			</div>
 		<!-- not working -->
+
 			<a class="btn btn-info navbar-right" ng-click="showSearch()">Search</a>
 			<a class="btn btn-info navbar-right" ng-show="eventBtnNav" ng-click="showAddEvent()">Add Event</a>
 			<a class="btn btn-info navbar-right" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign In</a>
@@ -82,14 +83,17 @@
 		<!-- need to add order by tweet count  -->
 		<div class="events_list" ng-repeat="event in events | filter:query ">
 			<div id="event_tn" class="thumbnail">
-				<h3>{{event.name}}</h3>
-				<h4>#{{event.hashtag}}</h4>
-				<h5>Tweet Count: {{event.tweet_count}}</h5>
-				<p>Description: {{event.desc}}</p>
-				<p>Location: {{event.loc}}</p>
-				<p>{{event.date}}</p>
-				<p>Created by: {{event.user.username}}</p>
-
+				<div class="left_event">
+					<h3 class="event_name">{{event.name}}</h3>
+					<h4>#{{event.hashtag}}</h4>
+					<p>Description: {{event.desc}}</p>
+				</div>
+				<div class="right_event">
+					<h5>Tweet Count: {{event.tweet_count}}</h5>
+					<p>Location: {{event.loc}}</p>
+					<p>{{event.date}}</p>
+					<p>Created by: {{event.user.username}}</p>
+				</div>
 				<!-- EDIT EVENT -->
 				<div ng-show="current_user.id == event.user_id">
 					<button class="btn btn-info btn-group" ng-click="editEventShow()">Edit</button>
