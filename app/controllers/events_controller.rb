@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
 
+  before_action :is_authenticated?, only: [:create]
   before_action :render_main_layout_if_format_html
 
   respond_to :json, :html
 
   def index
-    respond_with Event.all.to_json :include => :users
+    respond_with Event.all.to_json :include => :user
   end
 
   def create # need to add dates and geo location
@@ -21,9 +22,9 @@ class EventsController < ApplicationController
     new_event[:tweet_count] = tweet_count
     new_event[:lat]  = geo[0]
     new_event[:long] = geo[1]
+    new_event[:user_id] = @current_user.id
 
     respond_with Event.create(new_event)
-
 
   end
 
