@@ -34,11 +34,14 @@ gem 'angular-rails-templates'
 # gem 'unicorn'
 gem 'geocoder'
 
+gem 'pg'
+
 gem 'twitter'
 
 gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
+	gem 'rails_12factor'
 	gem 'awesome_print'
 	gem 'pry'
 	gem 'pry-rails'
