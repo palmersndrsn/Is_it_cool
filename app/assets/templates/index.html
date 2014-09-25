@@ -1,0 +1,148 @@
+<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+
+<div class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand">¯\_(ツ)_/¯</a>
+			<div class="navbar-brand" ng-show="usernameNav"><p>Welcome, {{current_user.username}}</p></div>
+		</div>
+		<!-- not working -->
+			<a class="btn btn-info navbar-right" ng-click="showSearch()">Search</a>
+			<a class="btn btn-info navbar-right" ng-show="eventBtnNav" ng-click="showAddEvent()">Add Event</a>
+			<a class="btn btn-info navbar-right" ng-show="signUpBtnNav" ng-click="showAuthBox()">Sign In</a>
+			<a class="btn btn-danger navbar-right" ng-show="logoutBtn" ng-click="logout()">Logout</a>
+	</div>
+</div>
+<!-- LEFT DIV -->
+<div class="row fixed">
+<!-- SEARCH -->
+	<div class="col-md-6 col-xs-12 box">
+		<div class="row" ng-show="searchBox">
+			<div id="one" class="col-md-12 box">
+				<h1 class="header">IS IT COOL?</h1>
+				<form ng-submit="clearSearch()">
+					<input type="text" autofocus="true" class="form-control searchval" ng-model="query">
+					<button ng-click="clearSearch()" class="btn">Clear</button>
+				</form>
+			</div>
+		</div>
+<!-- SIGN IN OR UP -->
+		<div class="row" ng-show="authBox">
+			<div id="one" class="col-md-12 box" >
+				<form ng-show="show_sign_in">
+					<h1 class="header">SIGN IN</h1>
+					<div ng-hide="signInErr" >
+						<p class="error">Error Signing In Please Try again</p>
+					</div>
+					<input ng-model="user.username" class="form-control" required="true" type="text" placeholder="username">
+					<input ng-model="user.password" class="form-control" required="true" type="password" placeholder="password">
+					<button ng-click="addSession(user)" class="btn btn-success">Submit</button>
+					<button class="btn btn-warning" ng-click="showSignUp()" ng-show="show_sign_in">Create account</button>
+				</form><!-- sign in form -->
+				<div ng-show="show_sign_up">
+					<form >
+						<h1 class="header">SIGN ME UP</h1>
+						<div ng-hide="signUpErr">
+							<p class="error">Error Signing Up Please Try again</p>
+						</div>
+						<input ng-model="newUser.email" class="form-control" required="true" type="text" placeholder="email">
+						<input ng-model="newUser.username" class="form-control" required="true" type="text" placeholder="username">
+						<input ng-model="newUser.password" class="form-control" required="true" type="password" placeholder="password">
+						<button ng-click="signUp(newUser)" class="btn btn-success">Submit</button>
+						<button class="btn btn-warning" ng-click="showSignIn()" ng-show="show_sign_up">Back to Sign In</button>
+					</form>
+
+				</div><!-- hidden sign up -->
+				<!-- <button class="btn" ng-click="showSignUp()" ng-show="show_sign_in">Create account</button> -->
+
+			</div><!-- close  -->
+		</div><!-- close row -->
+<!-- ADD NEW EVENT -->
+		<div class="row" ng-show="addEventBox">
+			<div id="one" class="col-md-12 box">
+				<form ng-submit="newEvent(event)">
+					<h1 class="header" id="new_event">POST SOMETHING</h1>
+					<div ng-hide="eventErr" >
+						<p class="error">Error Creating Event Please Try again</p>
+					</div>
+					<input ng-model="event.name" class="form-control" required="true" type="text" placeholder="name">
+					<input ng-model="event.hashtag" class="form-control" required="true" type="text" placeholder="#hashtag">
+					<input ng-model="event.desc" class="form-control" required="true" type="text" placeholder="short description">
+					<input ng-model="event.loc" class="form-control" required="true" type="text" placeholder="address">
+					<input ng-model="event.date" class="form-control" required="true" type="text" placeholder="date">
+					<button class="btn">Submit</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+<!-- RIGHT DIV -->
+	<div id="two" class="col-md-6 col-xs-12 box">
+	<!-- events -->
+		<!-- need to add order by tweet count  -->
+		<div class="events_list" ng-repeat="event in events | filter:query ">
+			<div id="event_tn" class="thumbnail">
+				<h3>{{event.name}}</h3>
+				<h4>#{{event.hashtag}}</h4>
+				<h5>Tweet Count: {{event.tweet_count}}</h5>
+				<p>Description: {{event.desc}}</p>
+				<p>Location: {{event.loc}}</p>
+				<p>{{event.date}}</p>
+
+				<!-- EDIT EVENT -->
+				<div ng-show="current_user.id == event.user_id">
+					<button class="btn btn-info" ng-click="editEventShow()">Edit</button>
+					<div ng-show="show_event_edit">
+						<form ng-submit="editEvent(eventEdit, event.id)">
+							<input ng-model="eventEdit.name" class="form-control" required="true" type="text" placeholder="name">
+							<input ng-model="eventEdit.hashtag" class="form-control" required="true" type="text" placeholder="hashtag">
+							<input ng-model="eventEdit.desc" class="form-control" required="true" type="text" placeholder="short description">
+							<input ng-model="eventEdit.loc" class="form-control" required="true" type="text" placeholder="address">
+							<button class="btn btn-success">Submit</button>
+						</form>
+					</div>
+					<!-- DELETE -->
+					<button ng-click="deleteEvent(event.id, events.indexOf(event))" class="btn btn-danger">Delete</button>
+				</div>
+					<button class="btn btn-warning" ng-click="getReviews(event)">View Reviews</button>
+					<div ng-show="show_reviews">
+					<!-- need to add user name -->
+					<div ng-repeat="review in reviews">
+						<h3>Cool or Not?: {{review.cool}}</h3>
+						<p>The Basics: {{review.body}}</p>
+						<p>The Ratio: {{review.ratio}}% Dudes</p>
+						<p>The Grime: {{review.grime}}% Grime</p>
+						<br>
+					</div>
+
+						<div class="review-form">
+					<button class="btn btn-info" ng-click="hideReviews()">Hide Reviews</button>
+
+ 							<button class="btn btn-success" ng-click = "showReviewForm()">Add a Review</button>
+						  <div ng-show="show_review_form">
+					     <form ng-submit="addReview(newReview, event.id)">
+					     	<label>Review</label>
+					     	<input type="text" class="form-control" ng-model="newReview.body" placeholder="140 characters please">
+					     	<!--  -->
+								<select ng-model="newReview.cool" class="form-control options">
+				          <option value="" disabled selected>Cool or Not?</option>
+				          <option>Cool</option>
+				          <option>Not Cool</option>
+				        </select>
+					     	<!--  -->
+					     	<label>The Ratio: {{newReview.ratio}}% Dudes</label>
+					     	<input type="range" ng-model="newReview.ratio" placeholder="the ratio" min="1" max="100">
+					     	<label>The Grime:  {{newReview.grime}}% Grime</label>
+					     	<input type="range" ng-model="newReview.grime"placeholder="the grime level" min="1" max="100">
+					     	<button class="btn form-control" >Add Review</button>
+					     </form>
+						  </div> <!-- close show review form -->
+						</div><!-- close floating div -->
+						<br>
+
+
+
+					</div><!-- close show reviews -->
+			</div><!-- close thumbnail -->
+		</div><!-- close event list -->
+</div><!-- close main row -->
