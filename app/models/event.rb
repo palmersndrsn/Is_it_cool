@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
 	has_many :reviews, dependent: :destroy
-	has_many :users, through: :reviews, dependent: :destroy
+	belongs_to :user
 
 	validates :name,
 		:uniqueness => true,

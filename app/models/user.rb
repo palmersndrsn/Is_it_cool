@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	has_many :reviews, dependent: :destroy
-	has_many :events, through: :reviews, dependent: :destroy
+	has_many :events, dependent: :destroy
 
 
 	validates :username,
