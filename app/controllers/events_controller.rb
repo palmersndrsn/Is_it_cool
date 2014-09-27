@@ -15,13 +15,13 @@ class EventsController < ApplicationController
     results = twitter_call hashtag[:hashtag]
     tweet_count = results.to_a.length
 
-    loc = params.require(:event).permit(:loc)
-    geo = Geocoder.coordinates(loc)
+    # loc = params.require(:event).permit(:loc)
+    # geo = Geocoder.coordinates(loc)
 
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc, :date)
     new_event[:tweet_count] = tweet_count
-    new_event[:lat]  = geo[0]
-    new_event[:long] = geo[1]
+    # new_event[:lat]  = geo[0]
+    # new_event[:long] = geo[1]
     new_event[:user_id] = @current_user.id
 
     respond_with Event.create(new_event)
@@ -31,7 +31,6 @@ class EventsController < ApplicationController
   def update
     new_info = params.require(:event).permit(:name, :hashtag, :desc, :loc)
     @event = Event.find_by_id(params[:id])
-    p "route works"
 
     p new_info
 
