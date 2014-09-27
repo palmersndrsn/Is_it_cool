@@ -119,7 +119,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		$http.post("/users.json", {user: newUser}).success (data) =>
 			$scope.newUser = {}
 			$scope.users = data
-			console.log data
 			$scope.signUpErr = true
 			$scope.show_sign_up = false
 			$scope.show_sign_in = true
