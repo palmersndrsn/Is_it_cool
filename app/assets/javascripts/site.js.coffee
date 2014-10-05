@@ -15,9 +15,7 @@ isItCool.config ["$routeProvider", "$locationProvider", ($routeProvider, $locati
 
 isItCool.controller "MainCtrl", ["$scope", "$http", "$rootScope", ($scope, $http, $rootScope) ->
 	if !$scope.current_user
-		console.log("checking for current_user")
 		$http.get("/logged_in_user.json").success (data) =>
-			console.log "Welcome,", user
 			$rootScope.current_user = user
 ]
 
@@ -76,7 +74,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 	$scope.logout = ->
 		$http.get("/logout.json").success ->
-			console.log "signed out"
 			$scope.signUpBtnNav = true
 			$scope.eventBtnNav = false
 			$scope.addEventBox = false
@@ -94,7 +91,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.getReviews = (event) ->
 		# $scope.show_reviews = true
 		this.show_reviews = true
-		console.log $scope.collapse1
 		$http.get("/events/" + event.id + "/reviews.json").success (data) ->
 			$scope.reviews = data
 
@@ -111,7 +107,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 # SIGNUP
 # user signup
 	$scope.signUp = (newUser) ->
-		console.log newUser
 		$http.post("/users.json", {user: newUser}).success (data) =>
 			$scope.newUser = {}
 			$scope.users = data
@@ -133,11 +128,9 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 # new event
 	$scope.newEvent = (event) ->
-		console.log event
 		$http.post("/events.json", event).success (data) =>
 			$scope.event = ""
 			$scope.events.push data
-			console.log data
 			$scope.eventErr = true
 		.error (err) ->
 			$scope.eventErr = false
@@ -146,10 +139,7 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	# edit event
 	$scope.editEvent = (event, index) ->
 		this.show_event_edit = true
-		console.log $scope.review
-		console.log index
 		$http.put("/events/" + index + ".json", event).success (data) =>
-			console.log data
 			this.event = data
 			this.show_event_edit = false
 
@@ -158,7 +148,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 
 	# delete event
 	$scope.deleteEvent = (id, index) ->
-		console.log index
 		$http.delete("/events/" + id + ".json").success (data) =>
 			$scope.events.splice(index,1)
 			console.log data
@@ -168,19 +157,16 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		$scope.searchBox = true
 		$scope.authBox = false
 		$scope.addEventBox = false
-		console.log "show Search"
 
 	$scope.showAuthBox = ->
 		$scope.authBox = true
 		$scope.searchBox = false
 		$scope.addEventBox = false
-		console.log "show Auth"
 
 	$scope.showAddEvent = ->
 		$scope.addEventBox = true
 		$scope.searchBox = false
 		$scope.authBox = false
-		console.log "show Event"
 
 	# hide/show
 	$scope.editEventShow = ->
