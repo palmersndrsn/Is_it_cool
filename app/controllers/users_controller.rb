@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   before_action :user_params, only: [:show, :update, :destroy]
-
   before_action :render_main_layout_if_format_html
 
   respond_to :json, :html

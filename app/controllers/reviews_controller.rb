@@ -28,7 +28,6 @@ class ReviewsController < ApplicationController
 		respond_with Review.find_by_event_id(event_id)
 	end
 
-
 	private
 
   def render_main_layout_if_format_html

@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-
 	def twitter_call term
 		client = Twitter::REST::Client.new do |config|
 		  config.consumer_key        = ENV["YOUR_CONSUMER_KEY"]
