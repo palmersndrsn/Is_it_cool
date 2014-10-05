@@ -144,13 +144,11 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			this.show_event_edit = false
 
 
-
-
 	# delete event
 	$scope.deleteEvent = (id, index) ->
 		$http.delete("/events/" + id + ".json").success (data) =>
 			$scope.events.splice(index,1)
-			console.log data
+
 
 	# HIDE/SHOW BOXES
 	$scope.showSearch = ->
