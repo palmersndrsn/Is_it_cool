@@ -33,10 +33,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.eventErr = true
 	$scope.authBox = false
 
-
-
-
-
 # INIT REVIEWS
 	$scope.reviews = []
 	$scope.review = {}
@@ -67,8 +63,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		$scope.logoutBtn = true
 		$scope.searchBox = true
 		$scope.authBox = false
-
-
 
 	$scope.checkSesh()
 
@@ -103,7 +97,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.show_review_form = false
 			$scope.review = ""
 
-
 # SIGNUP
 # user signup
 	$scope.signUp = (newUser) ->
@@ -115,7 +108,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			$scope.show_sign_in = true
 		.error (err) ->
 			$scope.signUpErr = false
-
 
 # EVENTS
 
@@ -135,7 +127,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 		.error (err) ->
 			$scope.eventErr = false
 
-
 	# edit event
 	$scope.editEvent = (event, index) ->
 		this.show_event_edit = true
@@ -143,12 +134,10 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 			this.event = data
 			this.show_event_edit = false
 
-
 	# delete event
 	$scope.deleteEvent = (id, index) ->
 		$http.delete("/events/" + id + ".json").success (data) =>
 			$scope.events.splice(index,1)
-
 
 	# HIDE/SHOW BOXES
 	$scope.showSearch = ->
@@ -183,8 +172,6 @@ isItCool.controller "siteCtrl", ["$scope", "$http", "$rootScope", "$location", (
 	$scope.showSignIn = ->
 		$scope.show_sign_up = false
 		$scope.show_sign_in = true
-
-
 
 ]
 

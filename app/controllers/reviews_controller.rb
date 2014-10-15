@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
 		new_review = params.require(:review).permit(:body, :cool, :ratio, :grime, :event_id)
 		review = Review.create(new_review)
 		event = Event.find_by_id(params[:event_id])
-
 		event.reviews << review
 
 		render json: review

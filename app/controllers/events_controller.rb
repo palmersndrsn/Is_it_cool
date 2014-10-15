@@ -10,14 +10,12 @@ class EventsController < ApplicationController
   end
 
   def create
-
     hashtag = params.require(:event).permit(:hashtag)
     results = twitter_call hashtag[:hashtag]
     tweet_count = results.to_a.length
 
     new_event = params.require(:event).permit(:name, :hashtag, :desc, :loc, :date)
     new_event[:tweet_count] = tweet_count
-
     new_event[:user_id] = @current_user.id
 
     respond_with Event.create(new_event)
