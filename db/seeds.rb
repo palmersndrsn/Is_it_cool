@@ -35,18 +35,18 @@ user123 = User.create({username: "katie45",
 
 # events
 
-lebwoski = Event.create({name: "Lebwoski Fest SF",
+lebwoski = Event.create({name: "Lebowski Fest SF",
 	desc: "The Dudes Abide",
-	hashtag: "LebwoskiFest",
+	hashtag: "LebowskiFest",
 	loc: "900 King Drive, Daily City CA",
 	date: "October 12th 2014",
 	lat: 37.6511005,
 	long: -122.467991,
 	tweet_count: "100"})
 
-cochella = Event.create({name: "Cochella",
+cochella = Event.create({name: "Cocahella",
 	desc: "Massive Music Festival",
-	hashtag: "cochella",
+	hashtag: "coachella",
 	loc: "81-800 Avenue 51, Indio, CA 92201",
 	date: "October 12th ",
 	lat: 33.6784492,
