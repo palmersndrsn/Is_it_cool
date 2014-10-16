@@ -42,7 +42,7 @@ lebwoski = Event.create({name: "Lebowski Fest SF",
 	date: "October 12th 2014",
 	lat: 37.6511005,
 	long: -122.467991,
-	tweet_count: "100"})
+	tweet_count: "4034"})
 
 cochella = Event.create({name: "Cocahella",
 	desc: "Massive Music Festival",
@@ -51,7 +51,7 @@ cochella = Event.create({name: "Cocahella",
 	date: "October 12th ",
 	lat: 33.6784492,
 	long: -116.237155,
-	tweet_count: "100"})
+	tweet_count: "11239430"})
 
 hiero = Event.create({name: "Hiero Day",
 	desc: "Hieroglyphics Free Concert in Oakland",
